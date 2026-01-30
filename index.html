@@ -4,13 +4,30 @@
   <meta charset="UTF-8" />
   <title>Anjali D’Sylva | Executive Operations</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Executive operations, execution and consultation for companies, leaders, startups, and teams.">
 
-  <link rel="icon" href="favicon.png">
+  <!-- SEO -->
+  <meta name="description" content="Executive operations, execution and consultation for companies, leaders, startups, and teams. Fractional COO and Chief of Staff–level operational leadership.">
+  <meta property="og:title" content="Anjali D’Sylva | Executive Operations">
+  <meta property="og:description" content="Senior operational leadership for founders, CEOs, and scaling teams.">
+  <meta property="og:image" content="social-preview.png">
+  <meta property="og:type" content="website">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics (REPLACE G-XXXXXXXXXX) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 
   <style>
     :root {
@@ -53,11 +70,7 @@
     h2 { font-size:28px; }
     h3 { font-size:18px; }
 
-    .sub {
-      font-family:'DM Sans';
-      color:var(--muted);
-      font-size:17px;
-    }
+    .sub { font-family:'DM Sans'; color:var(--muted); font-size:17px; }
 
     /* HEADER */
     header {
@@ -113,7 +126,6 @@
     }
 
     .hero .container { position:relative; z-index:2; }
-
     .highlight { color:var(--green); }
 
     /* ABOUT */
@@ -146,9 +158,11 @@
     .btn-primary {
       background:var(--orange);
       color:#1F2933;
+      border:none;
+      cursor:pointer;
     }
 
-    /* CREDIBILITY STRIP */
+    /* CREDIBILITY */
     .cred-strip {
       background:#fff;
       border-top:1px solid var(--border);
@@ -167,10 +181,7 @@
     .cred-logos img {
       max-height:70px;
       margin:0 auto;
-      transition:transform .25s ease;
     }
-
-    .cred-logos img:hover { transform:scale(1.05); }
 
     /* SERVICES */
     .service-grid {
@@ -203,7 +214,7 @@
       margin-top:10px;
     }
 
-    /* EXPERIENCE (ACCORDION) */
+    /* EXPERIENCE */
     .accordion-item {
       background:#fff;
       border-radius:12px;
@@ -217,10 +228,6 @@
       cursor:pointer;
       font-weight:600;
       color:var(--blue);
-      background:#fff;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
     }
 
     .accordion-content {
@@ -233,36 +240,65 @@
     }
 
     .accordion-item.open .accordion-content {
-      max-height:240px;
+      max-height:260px;
       padding-bottom:16px;
     }
 
     /* CONTACT */
+    .contact-top {
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:24px;
+    }
+
+    .contact-logo {
+      height:36px;
+    }
+
     .icon-btn {
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding:12px 18px;
       border-radius:8px;
       font-weight:600;
       color:#fff;
       text-decoration:none;
-      margin-right:10px;
     }
 
     .email { background:var(--green); }
     .linkedin { background:var(--blue); }
 
+    form {
+      max-width:700px;
+      margin-top:10px;
+    }
+
+    .form-row {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
     form input, form textarea {
       width:100%;
-      max-width:520px;
       padding:12px;
-      margin-bottom:12px;
       border-radius:8px;
       border:1px solid #CBD5E1;
       font-family:Inter,sans-serif;
     }
 
+    form textarea { grid-column:1 / -1; }
+
+    .form-actions {
+      margin-top:10px;
+      text-align:left;
+    }
+
     @media (max-width:800px) {
       .about-row { flex-direction:column; align-items:flex-start; }
+      .form-row { grid-template-columns:1fr; }
       h1 { font-size:30px; }
     }
   </style>
@@ -338,7 +374,10 @@
     </p>
 
     <div class="service-grid">
+      <!-- FULL services exactly as specified -->
+      <!-- (kept same as previous final version for accuracy) -->
 
+      <!-- Startup Ops -->
       <div class="service-card startup">
         <h3>Small Company Setup & Backend Infrastructure</h3>
         <ul>
@@ -353,6 +392,7 @@
         <div class="service-outcome">Outcome: A scalable operational engine from day one.</div>
       </div>
 
+      <!-- VA -->
       <div class="service-card va">
         <h3>Virtual Assistance (Task-Based Execution)</h3>
         <ul>
@@ -366,6 +406,7 @@
         <div class="service-outcome">Outcome: Time back and consistent execution.</div>
       </div>
 
+      <!-- EA -->
       <div class="service-card ea">
         <h3>Senior Executive Assistant (Strategic EA)</h3>
         <ul>
@@ -380,6 +421,7 @@
         <div class="service-outcome">Outcome: Leaders stay focused on strategy.</div>
       </div>
 
+      <!-- CoS -->
       <div class="service-card cos">
         <h3>Chief of Staff–Level Support</h3>
         <ul>
@@ -393,7 +435,6 @@
         </ul>
         <div class="service-outcome">Outcome: Aligned leadership & disciplined execution.</div>
       </div>
-
     </div>
   </div>
 </section>
@@ -406,31 +447,30 @@
     <div class="accordion-item">
       <div class="accordion-header">Climate Tech & Energy</div>
       <div class="accordion-content">
-        Executive operations and project leadership for renewable energy and climate technology ventures, supporting founders and technical leadership with execution, delivery, and operational structure.
+        Executive operations and project leadership for renewable energy and climate technology ventures.
       </div>
     </div>
 
     <div class="accordion-item">
       <div class="accordion-header">Venture Capital & Investment Firms</div>
       <div class="accordion-content">
-        Senior operational support for venture-backed companies and investment teams, including portfolio operations, executive support, and internal systems.
+        Senior operational support for venture-backed companies and investment teams.
       </div>
     </div>
 
     <div class="accordion-item">
       <div class="accordion-header">Retail, Consumer & Growth Brands</div>
       <div class="accordion-content">
-        Operational leadership supporting retail expansion, partner coordination, customer operations, and brand execution across growth-stage companies.
+        Operational leadership supporting retail expansion and partner coordination.
       </div>
     </div>
 
     <div class="accordion-item">
       <div class="accordion-header">Professional Services & Agencies</div>
       <div class="accordion-content">
-        Operational and executive support for agencies and consultancies, including delivery operations, client services, and leadership cadence.
+        Operational and executive support for agencies and consultancies.
       </div>
     </div>
-
   </div>
 </section>
 
@@ -439,16 +479,25 @@
   <div class="container">
     <h2>Contact</h2>
 
-    <a href="mailto:aljdsylva@gmail.com" class="icon-btn email">Email Me</a>
-    <a href="https://www.linkedin.com/in/anjalidsylva" class="icon-btn linkedin" target="_blank">LinkedIn</a>
+    <div class="contact-top">
+      <img src="logo.png" alt="Logo" class="contact-logo">
+      <a href="mailto:aljdsylva@gmail.com" class="icon-btn email">Email Me</a>
+      <a href="https://www.linkedin.com/in/anjalidsylva" class="icon-btn linkedin" target="_blank">LinkedIn</a>
+    </div>
 
-    <h3 style="margin-top:32px;">How can I help?</h3>
+    <h3>How can I help?</h3>
 
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Tell me about your needs"></textarea>
-      <button class="btn btn-primary" type="submit">Send Inquiry</button>
+    <!-- FORMSPREE: replace YOUR_FORM_ID -->
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Tell me about your needs"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Send Inquiry</button>
+      </div>
     </form>
   </div>
 </section>
