@@ -10,7 +10,7 @@
   <meta name="keywords" content="executive operations, chief of staff services, senior executive assistant, fractional operations, startup operations, business operations support, operational leadership, founder support, leadership operations, operations consulting">
   <meta name="author" content="Anjali D’Sylva">
 
-  <!-- Open Graph -->
+  <!-- Social Preview -->
   <meta property="og:title" content="Anjali D’Sylva | Executive Operations">
   <meta property="og:description" content="Executive operations, execution and consultation for companies, leaders, startups, and teams.">
   <meta property="og:type" content="website">
@@ -117,7 +117,7 @@
       padding-bottom: 4px;
     }
 
-    nav a:hover, nav a.active {
+    nav a:hover {
       color: var(--accent-orange);
       border-bottom: 2px solid var(--accent-orange);
     }
@@ -170,7 +170,7 @@
       margin-top: 12px;
     }
 
-    /* Credibility Strip — UPDATED */
+    /* Credibility Strip */
     .cred-strip {
       background: #ffffff;
       border-top: 1px solid var(--border-light);
@@ -187,17 +187,15 @@
     }
 
     .cred-logos img {
-      max-height: 60px;   /* BIGGER */
+      max-height: 60px;
       width: auto;
-      opacity: 1;         /* FULL COLOUR */
-      filter: none;       /* NO GRAYSCALE */
+      opacity: 1;
+      filter: none;
       transition: transform 0.25s ease;
       margin: 0 auto;
     }
 
-    .cred-logos img:hover {
-      transform: scale(1.05);
-    }
+    .cred-logos img:hover { transform: scale(1.05); }
 
     /* Services */
     .service-grid {
@@ -388,7 +386,85 @@
   </div>
 </section>
 
-<!-- SERVICES + CONTACT SECTIONS REMAIN SAME AS BEFORE -->
+<!-- SERVICES -->
+<section id="services" class="alt">
+  <div class="container">
+    <h2>Services</h2>
+
+    <p>
+      I help founders and leadership teams build, run, and scale companies by setting up the operational backbone — from early-stage setup to executive and leadership operations.
+    </p>
+
+    <div class="service-grid">
+
+      <div class="service-card startup">
+        <div class="service-header"><h3>Startup Ops</h3></div>
+        <ul>
+          <li>Company formation & finance workflows</li>
+          <li>Accounting & invoicing systems</li>
+          <li>HR, contractors & compliance</li>
+          <li>Tools, systems & SOPs</li>
+        </ul>
+        <div class="service-outcome">Outcome: Scalable foundation.</div>
+      </div>
+
+      <div class="service-card va">
+        <div class="service-header"><h3>Virtual Assistance</h3></div>
+        <ul>
+          <li>Calendar & inbox</li>
+          <li>Travel & logistics</li>
+          <li>CRM & admin</li>
+          <li>Finance follow-ups</li>
+        </ul>
+        <div class="service-outcome">Outcome: Time back.</div>
+      </div>
+
+      <div class="service-card ea">
+        <div class="service-header"><h3>Senior Executive Assistant</h3></div>
+        <ul>
+          <li>CEO support</li>
+          <li>Board & investor ops</li>
+          <li>Priority tracking</li>
+        </ul>
+        <div class="service-outcome">Outcome: Focused leadership.</div>
+      </div>
+
+      <div class="service-card cos">
+        <div class="service-header"><h3>Chief of Staff</h3></div>
+        <ul>
+          <li>Strategy to execution</li>
+          <li>OKRs & cadence</li>
+          <li>Cross-team alignment</li>
+        </ul>
+        <div class="service-outcome">Outcome: Scaled leadership.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="alt">
+  <div class="container">
+    <h2>Contact</h2>
+
+    <div style="margin-bottom:20px;">
+      <a href="mailto:aljdsylva@gmail.com" class="icon-btn btn-email">Email Me</a>
+      <a href="https://www.linkedin.com/in/anjalidsylva" target="_blank" class="icon-btn btn-linkedin">LinkedIn</a>
+    </div>
+
+    <h3>How can I help?</h3>
+
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+      </div>
+      <textarea name="message" rows="5" placeholder="Tell me about your needs"></textarea>
+      <button type="submit">Send Inquiry</button>
+    </form>
+  </div>
+</section>
 
 <footer>
   <div class="container">
@@ -396,7 +472,7 @@
   </div>
 </footer>
 
-<button id="scrollTopBtn" title="Back to top">↑</button>
+<button id="scrollTopBtn">↑</button>
 
 <script>
   const header = document.getElementById('site-header');
