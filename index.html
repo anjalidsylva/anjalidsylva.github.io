@@ -44,7 +44,6 @@
       background: var(--background-light);
       color: var(--text-dark);
       line-height: 1.55;
-      letter-spacing: 0.1px;
     }
 
     h1 { font-size: 40px; letter-spacing: -0.5px; }
@@ -57,6 +56,12 @@
       margin-top: 0;
     }
 
+    .sub-font {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--muted-bluegrey);
+      font-size: 17px;
+    }
+
     .container {
       max-width: 1100px;
       margin: 0 auto;
@@ -66,7 +71,7 @@
     section { padding: 56px 0; }
     .alt { background: var(--background-alt); }
 
-    /* Header + Nav (unchanged) */
+    /* Header */
     header {
       background: #ffffff;
       border-bottom: 1px solid var(--border-light);
@@ -75,6 +80,7 @@
       z-index: 1000;
       transition: box-shadow 0.3s ease;
     }
+
     header.scrolled { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
 
     .header-inner {
@@ -84,17 +90,26 @@
       padding: 14px 0;
     }
 
-    .brand-wrap { display: flex; align-items: center; gap: 14px; }
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
     .logo-box {
-      width: 50px; height: 50px;
+      width: 50px;
+      height: 50px;
       border: 2px dashed #CBD5E1;
       border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 11px; color: var(--muted-bluegrey);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--muted-bluegrey);
     }
 
     .brand-name { font-size: 20px; font-weight: 800; }
-    .brand-sub { font-size: 12px; color: var(--muted-bluegrey); }
+    .brand-sub { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--muted-bluegrey); }
 
     nav a {
       margin-left: 22px;
@@ -104,11 +119,66 @@
       text-decoration: none;
       border-bottom: 2px solid transparent;
       padding-bottom: 4px;
+      transition: all 0.2s ease;
     }
 
     nav a:hover, nav a.active {
       color: var(--accent-orange);
       border-bottom: 2px solid var(--accent-orange);
+    }
+
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 4px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--primary-green); }
+
+    .hero { padding: 48px 0 22px; }
+    .highlight { color: var(--primary-green); }
+
+    .profile-row { display: flex; gap: 22px; align-items: center; }
+    .profile-row img { max-width: 165px; border-radius: 16px; }
+
+    .button-primary {
+      background: var(--accent-orange);
+      color: #1F2933;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 12px;
+    }
+
+    .button-outline {
+      border: 2px solid var(--primary-green);
+      color: var(--primary-green);
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      display: inline-block;
+      margin-right: 10px;
+      margin-top: 12px;
+    }
+
+    /* Credibility */
+    .cred-strip {
+      background: #ffffff;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      padding: 26px 0;
+    }
+
+    .cred-logos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .logo-placeholder {
+      border: 2px dashed #CBD5E1;
+      border-radius: 10px;
+      padding: 16px;
+      font-size: 13px;
+      color: var(--muted-bluegrey);
+      background: #F8FAFC;
     }
 
     /* Services */
@@ -136,15 +206,14 @@
     .service-header {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 8px;
+      gap: 10px;
+      margin-bottom: 6px;
     }
 
-    .service-icon {
-      width: 28px;
-      height: 28px;
-      color: var(--primary-green);
-      flex-shrink: 0;
+    .service-header svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--primary-blue);
     }
 
     .service-card ul { padding-left: 18px; margin: 12px 0; }
@@ -158,29 +227,52 @@
       margin-top: 10px;
     }
 
-    /* Credibility Logos */
-    .cred-strip {
+    /* Contact */
+    .btn-email { background: var(--primary-green); color: #ffffff; }
+    .btn-linkedin { background: var(--primary-blue); color: #ffffff; }
+
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      margin-right: 10px;
+      text-decoration: none;
+    }
+
+    .icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+    form input, form textarea {
+      width: 100%;
+      max-width: 520px;
+      padding: 12px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      border: 1px solid #CBD5E1;
+      font-family: Inter, sans-serif;
+    }
+
+    form button {
+      background: var(--accent-orange);
+      color: #1F2933;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    footer {
       background: #ffffff;
       border-top: 1px solid var(--border-light);
-      border-bottom: 1px solid var(--border-light);
       padding: 26px 0;
+      margin-top: 50px;
+      font-size: 13px;
+      color: var(--muted-bluegrey);
     }
 
-    .cred-logos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 20px;
-      text-align: center;
-      align-items: center;
-    }
-
-    .cred-logos img {
-      max-height: 36px;
-      filter: grayscale(100%);
-      opacity: 0.8;
-    }
-
-    /* Scroll to Top */
     #scrollTopBtn {
       position: fixed;
       bottom: 26px;
@@ -194,16 +286,79 @@
       font-size: 18px;
       cursor: pointer;
       display: none;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
 
     #scrollTopBtn.show { display: block; }
+
+    @media (max-width: 800px) {
+      nav { position: absolute; top: 64px; left: 0; right: 0; background: #ffffff; flex-direction: column; padding: 12px 20px; display: none; }
+      nav.open { display: flex; }
+      .hamburger { display: flex; }
+      .profile-row { flex-direction: column; align-items: flex-start; }
+      h1 { font-size: 32px; }
+    }
   </style>
 </head>
 
 <body>
 
-<!-- SERVICES SECTION WITH ICONS -->
+<header id="site-header">
+  <div class="container header-inner">
+    <div class="brand-wrap">
+      <div class="logo-box">Logo</div>
+      <div>
+        <div class="brand-name">Anjali D’Sylva</div>
+        <div class="brand-sub">Executive Operations | Execution & Consultation</div>
+      </div>
+    </div>
+
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+
+    <nav id="main-nav">
+      <a href="#services">Services</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero alt">
+  <div class="container">
+    <h1>Executive Operations and Leadership Support<br>
+      for <span class="highlight">Companies, Leaders, Startups, and Teams</span>
+    </h1>
+    <p class="sub-font">
+      I support founders and leadership teams with the operational backbone required to scale, from startup setup to senior executive and Chief of Staff level execution.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="container profile-row">
+    <img src="headshot.jpg" alt="Anjali D’Sylva Headshot">
+    <div>
+      <p>I partner with founders, CEOs, and leadership teams to bring structure, clarity, and execution discipline to fast moving organisations.</p>
+      <a href="Anjali_DSylva_CV.pdf" class="button-outline" download>Download CV</a>
+      <a href="#contact" class="button-primary">Start a Conversation</a>
+    </div>
+  </div>
+</section>
+
+<section class="cred-strip">
+  <div class="container">
+    <div class="cred-logos">
+      <div class="logo-placeholder">Boots</div>
+      <div class="logo-placeholder">Superdrug</div>
+      <div class="logo-placeholder">Holland & Barrett</div>
+      <div class="logo-placeholder">Ocado</div>
+      <div class="logo-placeholder">Wishup</div>
+      <div class="logo-placeholder">The Good Food Group</div>
+    </div>
+  </div>
+</section>
+
 <section id="services" class="alt">
   <div class="container">
     <h2>Services</h2>
@@ -215,85 +370,155 @@
 
     <div class="service-grid">
 
-      <!-- Startup Ops -->
       <div class="service-card startup">
         <div class="service-header">
-          <svg class="service-icon" viewBox="0 0 24 24"><path d="M12 2l4 4-3 3 4 8-2 2-8-4-3 3-4-4z"/></svg>
-          <h3>Startup Ops & Backend Infrastructure</h3>
+          <!-- Building Icon -->
+          <svg viewBox="0 0 24 24"><path d="M3 21h18v-2H3v2zM5 3h14v14H5V3zm2 2v10h10V5H7z"/></svg>
+          <h3>Small Company Setup & Backend Infrastructure (Startup Ops)</h3>
         </div>
         <ul>
-          <li>Company formation & entity setup</li>
-          <li>Business banking & finance workflows</li>
-          <li>Accounting & invoicing systems</li>
-          <li>HR, contractors & compliance</li>
-          <li>Tools, systems & SOPs</li>
-          <li>Legal & document governance</li>
+          <li>Company formation coordination & entity setup support</li>
+          <li>Business banking, payments & finance workflows</li>
+          <li>Accounting & invoicing systems (QuickBooks, Xero, billing ops)</li>
+          <li>Contractor & HR operations (onboarding, payroll, compliance)</li>
+          <li>Tools, systems & SOP setup (CRM, PM tools, documentation)</li>
+          <li>Legal & compliance coordination (NDAs, contracts, trackers)</li>
+          <li>Centralised document management & governance frameworks</li>
         </ul>
-        <div class="service-outcome">Outcome: Clean, scalable operational engine.</div>
+        <div class="service-outcome">Outcome: Founders get a clean, scalable operational engine from day one.</div>
       </div>
 
-      <!-- VA -->
       <div class="service-card va">
         <div class="service-header">
-          <svg class="service-icon" viewBox="0 0 24 24"><path d="M3 5h18v4H3zm0 6h18v8H3z"/></svg>
-          <h3>Virtual Assistance</h3>
+          <!-- Check Icon -->
+          <svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 12-12-1.5-1.5z"/></svg>
+          <h3>Virtual Assistance (Task-Based Execution)</h3>
         </div>
         <ul>
-          <li>Calendar & inbox management</li>
-          <li>Meetings & logistics</li>
-          <li>Research & reporting</li>
-          <li>Document & file management</li>
-          <li>CRM updates</li>
-          <li>Expenses & invoicing</li>
+          <li>Calendar, inbox & scheduling management</li>
+          <li>Travel, meetings & logistics coordination</li>
+          <li>Data entry, research & reporting support</li>
+          <li>Document formatting & file management</li>
+          <li>CRM updates & admin maintenance</li>
+          <li>Basic finance admin (expenses, invoicing, follow-ups)</li>
         </ul>
-        <div class="service-outcome">Outcome: Time back and consistent execution.</div>
+        <div class="service-outcome">Outcome: Leaders get time back and consistent execution without micromanagement.</div>
       </div>
 
-      <!-- EA -->
       <div class="service-card ea">
         <div class="service-header">
-          <svg class="service-icon" viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
-          <h3>Senior Executive Assistant</h3>
+          <!-- Briefcase Icon -->
+          <svg viewBox="0 0 24 24"><path d="M10 2h4v2h5v4H5V4h5V2zm9 8v10H5V10h14z"/></svg>
+          <h3>Senior Executive Assistant (Strategic EA)</h3>
         </div>
         <ul>
-          <li>CEO/Founder calendar & inbox</li>
-          <li>Board & investor coordination</li>
-          <li>Executive communications</li>
-          <li>Meeting prep & follow-ups</li>
-          <li>Priority & stakeholder tracking</li>
+          <li>CEO/Founder calendar & inbox ownership</li>
+          <li>Board & investor meeting coordination</li>
+          <li>Executive communications & stakeholder management</li>
+          <li>Meeting prep, briefs & follow-ups</li>
+          <li>Cross-team coordination & priority tracking</li>
+          <li>Confidential admin, documentation & reporting</li>
+          <li>Executive project management & delivery oversight</li>
         </ul>
-        <div class="service-outcome">Outcome: Focused leadership & smooth execution.</div>
+        <div class="service-outcome">Outcome: Leaders stay focused on strategy while execution is handled with precision.</div>
       </div>
 
-      <!-- Chief of Staff -->
       <div class="service-card cos">
         <div class="service-header">
-          <svg class="service-icon" viewBox="0 0 24 24"><path d="M3 3h18v4H3zm0 7h18v4H3zm0 7h18v3H3z"/></svg>
-          <h3>Chief of Staff–Level Support</h3>
+          <!-- Compass Icon -->
+          <svg viewBox="0 0 24 24"><path d="M12 2l4 8-8 4 4-8zm0 20c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10z"/></svg>
+          <h3>Chief of Staff–Level Support (Leadership & Operations)</h3>
         </div>
         <ul>
-          <li>Strategic execution & operating plans</li>
-          <li>Company-wide priorities & OKRs</li>
-          <li>Cross-functional alignment</li>
-          <li>Leadership cadence & governance</li>
-          <li>Operational scaling</li>
+          <li>Translating strategy into operational plans</li>
+          <li>Company-wide priorities & OKR tracking</li>
+          <li>Cross-functional execution & accountability</li>
+          <li>Leadership meeting cadence & governance</li>
+          <li>Executive reporting & business rhythm</li>
+          <li>Process optimisation & operational scaling</li>
+          <li>Acting as a bridge between leadership and teams</li>
         </ul>
-        <div class="service-outcome">Outcome: Aligned leadership & disciplined execution.</div>
+        <div class="service-outcome">Outcome: Leadership teams operate with clarity, alignment, and execution discipline.</div>
       </div>
 
     </div>
   </div>
 </section>
 
+<section id="contact" class="alt">
+  <div class="container">
+    <h2>Contact</h2>
+
+    <div style="margin-bottom: 20px;">
+      <a href="mailto:aljdsylva@gmail.com" class="icon-btn btn-email">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Email Me
+      </a>
+
+      <a href="https://www.linkedin.com/in/anjalidsylva" target="_blank" class="icon-btn btn-linkedin">
+        <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0zM7.5 8h4.8v2.2h.1c.7-1.3 2.4-2.7 5-2.7 5.4 0 6.4 3.6 6.4 8.2V24h-5v-7.4c0-1.8 0-4-2.4-4s-2.8 1.9-2.8 3.9V24h-5z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+
+    <h3>How can I help?</h3>
+
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+      </div>
+
+      <textarea name="message" rows="5" placeholder="Tell me about your needs" style="margin-top:12px;"></textarea>
+
+      <div style="margin-top: 10px;">
+        <button type="submit">Send Inquiry</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © 2026 Anjali D’Sylva | Executive Operations
+  </div>
+</footer>
+
 <button id="scrollTopBtn" title="Back to top">↑</button>
 
 <script>
+  const header = document.getElementById('site-header');
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('main-nav');
   const scrollBtn = document.getElementById('scrollTopBtn');
+
   window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 10);
     scrollBtn.classList.toggle('show', window.scrollY > 300);
   });
+
+  hamburger.addEventListener('click', () => nav.classList.toggle('open'));
+
   scrollBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 140;
+      if (pageYOffset >= sectionTop) current = section.getAttribute('id');
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
   });
 </script>
 
