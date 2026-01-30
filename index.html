@@ -203,9 +203,14 @@
     }
 
     /* Services */
+    .service-intro {
+      max-width: 820px;
+      margin-bottom: 26px;
+    }
+
     .service-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 18px;
     }
 
@@ -222,6 +227,7 @@
     .ea { border-top-color: var(--primary-blue); }
     .cos { border-top-color: #2C5282; }
 
+    .service-card ul { padding-left: 18px; margin: 12px 0; }
     .service-card li { font-size: 14px; margin-bottom: 6px; color: #475569; }
 
     .service-outcome {
@@ -229,6 +235,7 @@
       font-size: 14px;
       font-weight: 600;
       color: var(--primary-green);
+      margin-top: 10px;
     }
 
     /* Experience */
@@ -247,16 +254,9 @@
 
     summary { cursor: pointer; font-weight: 600; }
 
-    /* Contact Buttons (MATCH SCREENSHOT) */
-    .btn-email {
-      background: var(--primary-green);
-      color: #ffffff;
-    }
-
-    .btn-linkedin {
-      background: var(--primary-blue);
-      color: #ffffff;
-    }
+    /* Contact Buttons */
+    .btn-email { background: var(--primary-green); color: #ffffff; }
+    .btn-linkedin { background: var(--primary-blue); color: #ffffff; }
 
     .icon-btn {
       display: inline-flex;
@@ -406,50 +406,73 @@
 <section id="services" class="alt">
   <div class="container">
     <h2>Services</h2>
+
+    <div class="service-intro">
+      <p>
+        I help founders and leadership teams build, run, and scale companies by setting up the operational backbone, from early-stage setup to executive and leadership operations.
+      </p>
+      <p>
+        My work spans four levels of support, allowing companies to engage me based on where they are in their growth journey:
+      </p>
+    </div>
+
     <div class="service-grid">
+
       <div class="service-card startup">
-        <h3>Startup Setup and Backend Infrastructure</h3>
+        <h3>Small Company Setup & Backend Infrastructure (Startup Ops)</h3>
         <ul>
-          <li>Company setup and legal coordination</li>
-          <li>Finance, billing, and payments</li>
-          <li>HR, hiring, and contractors</li>
-          <li>Tools, systems, and SOPs</li>
+          <li>Company formation coordination & entity setup support</li>
+          <li>Business banking, payments & finance workflows</li>
+          <li>Accounting & invoicing systems (QuickBooks, Xero, billing ops)</li>
+          <li>Contractor & HR operations (onboarding, payroll, compliance)</li>
+          <li>Tools, systems & SOP setup (CRM, PM tools, documentation)</li>
+          <li>Legal & compliance coordination (NDAs, contracts, trackers)</li>
+          <li>Centralised document management & governance frameworks</li>
         </ul>
-        <div class="service-outcome">Outcome: Scalable operational foundation.</div>
+        <div class="service-outcome">Outcome: Founders get a clean, scalable operational engine from day one.</div>
       </div>
 
       <div class="service-card va">
-        <h3>Virtual Assistance</h3>
+        <h3>Virtual Assistance (Task-Based Execution)</h3>
         <ul>
-          <li>Calendar, inbox, and scheduling</li>
-          <li>Meetings, travel, and logistics</li>
-          <li>Research, data, and reporting</li>
-          <li>CRM updates and admin</li>
+          <li>Calendar, inbox & scheduling management</li>
+          <li>Travel, meetings & logistics coordination</li>
+          <li>Data entry, research & reporting support</li>
+          <li>Document formatting & file management</li>
+          <li>CRM updates & admin maintenance</li>
+          <li>Basic finance admin (expenses, invoicing, follow-ups)</li>
         </ul>
-        <div class="service-outcome">Outcome: Time back and execution consistency.</div>
+        <div class="service-outcome">Outcome: Leaders get time back and consistent execution without micromanagement.</div>
       </div>
 
       <div class="service-card ea">
-        <h3>Senior Executive Assistant</h3>
+        <h3>Senior Executive Assistant (Strategic EA)</h3>
         <ul>
-          <li>Founder calendar and inbox ownership</li>
-          <li>Board and investor coordination</li>
-          <li>Executive communications</li>
-          <li>Cross team priority tracking</li>
+          <li>CEO/Founder calendar & inbox ownership</li>
+          <li>Board & investor meeting coordination</li>
+          <li>Executive communications & stakeholder management</li>
+          <li>Meeting prep, briefs & follow-ups</li>
+          <li>Cross-team coordination & priority tracking</li>
+          <li>Confidential admin, documentation & reporting</li>
+          <li>Executive project management & delivery oversight</li>
         </ul>
-        <div class="service-outcome">Outcome: Focused leadership and smooth execution.</div>
+        <div class="service-outcome">Outcome: Leaders stay focused on strategy while execution is handled with precision.</div>
       </div>
 
       <div class="service-card cos">
-        <h3>Chief of Staff Level Support</h3>
+        <h3>Chief of Staff–Level Support (Leadership & Operations)</h3>
         <ul>
-          <li>Strategic execution and operating plans</li>
-          <li>Company wide priorities and OKRs</li>
-          <li>Leadership cadence and governance</li>
-          <li>Operational scaling</li>
+          <li>Translating strategy into operational plans</li>
+          <li>Company-wide priorities & OKR tracking</li>
+          <li>Cross-functional execution & accountability</li>
+          <li>Leadership meeting cadence & governance</li>
+          <li>Executive reporting & business rhythm</li>
+          <li>Process optimisation & operational scaling</li>
+          <li>Acting as a bridge between leadership and teams</li>
         </ul>
-        <div class="service-outcome">Outcome: Aligned leadership and disciplined execution.</div>
+        <div class="service-outcome">Outcome: Leadership teams operate with clarity, alignment, and execution discipline.</div>
       </div>
+
     </div>
   </div>
 </section>
