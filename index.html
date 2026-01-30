@@ -7,7 +7,7 @@
 
   <!-- SEO -->
   <meta name="description" content="Executive operations, execution and consultation for companies, leaders, startups, and teams. Senior executive support and Chief of Staff level execution.">
-  <meta name="keywords" content="executive operations, chief of staff services, senior executive assistant, fractional operations, startup operations, business operations support, operational leadership, founder support, leadership operations, operating partner, remote executive support, operations consulting">
+  <meta name="keywords" content="executive operations, chief of staff services, senior executive assistant, fractional operations, startup operations, business operations support, operational leadership, founder support, leadership operations, operations consulting">
   <meta name="author" content="Anjali D’Sylva">
 
   <!-- Open Graph -->
@@ -94,18 +94,16 @@
       display: flex;
       align-items: center;
       gap: 14px;
+      text-decoration: none;
+      color: inherit;
     }
 
-    .logo-box {
-      width: 50px;
-      height: 50px;
-      border: 2px dashed #CBD5E1;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      color: var(--muted-bluegrey);
+    .brand-wrap:hover { opacity: 0.9; }
+
+    .site-logo {
+      height: 42px;
+      width: auto;
+      border-radius: 6px;
     }
 
     .brand-name { font-size: 20px; font-weight: 800; }
@@ -130,11 +128,37 @@
     .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 4px; }
     .hamburger span { width: 24px; height: 2px; background: var(--primary-green); }
 
-    .hero { padding: 48px 0 22px; }
+    /* Hero with background image */
+    .hero {
+      padding: 56px 0 32px;
+      background-image: url('images/hero-bg.jpg'); /* UPLOAD hero-bg.jpg */
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(241,245,249,0.9);
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
     .highlight { color: var(--primary-green); }
 
     .profile-row { display: flex; gap: 22px; align-items: center; }
     .profile-row img { max-width: 165px; border-radius: 16px; }
+
+    .about-image {
+      max-width: 220px;
+      border-radius: 16px;
+      margin-top: 12px;
+    }
 
     .button-primary {
       background: var(--accent-orange);
@@ -169,16 +193,22 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 20px;
+      align-items: center;
       text-align: center;
     }
 
-    .logo-placeholder {
-      border: 2px dashed #CBD5E1;
-      border-radius: 10px;
-      padding: 16px;
-      font-size: 13px;
-      color: var(--muted-bluegrey);
-      background: #F8FAFC;
+    .cred-logos img {
+      max-height: 40px;
+      width: auto;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: all 0.25s ease;
+      margin: 0 auto;
+    }
+
+    .cred-logos img:hover {
+      filter: grayscale(0%);
+      opacity: 1;
     }
 
     /* Services */
@@ -214,6 +244,14 @@
       width: 22px;
       height: 22px;
       fill: var(--primary-blue);
+    }
+
+    .service-image {
+      width: 100%;
+      max-height: 110px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin: 10px 0 6px;
     }
 
     .service-card ul { padding-left: 18px; margin: 12px 0; }
@@ -304,13 +342,13 @@
 
 <header id="site-header">
   <div class="container header-inner">
-    <div class="brand-wrap">
-      <div class="logo-box">Logo</div>
+    <a href="/" class="brand-wrap">
+      <img src="logo.png" alt="Anjali D’Sylva logo" class="site-logo"> <!-- UPLOAD logo.png -->
       <div>
         <div class="brand-name">Anjali D’Sylva</div>
         <div class="brand-sub">Executive Operations | Execution & Consultation</div>
       </div>
-    </div>
+    </a>
 
     <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
@@ -318,15 +356,15 @@
 
     <nav id="main-nav">
       <a href="#services">Services</a>
-      <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
 
-<section class="hero alt">
+<section class="hero">
   <div class="container">
-    <h1>Executive Operations and Leadership Support<br>
+    <h1>
+      Executive Operations and Leadership Support<br>
       for <span class="highlight">Companies, Leaders, Startups, and Teams</span>
     </h1>
     <p class="sub-font">
@@ -335,13 +373,18 @@
   </div>
 </section>
 
-<section>
+<section class="alt">
   <div class="container profile-row">
-    <img src="headshot.jpg" alt="Anjali D’Sylva Headshot">
+    <img src="headshot.jpg" alt="Anjali D’Sylva Headshot"> <!-- UPLOAD headshot.jpg -->
     <div>
-      <p>I partner with founders, CEOs, and leadership teams to bring structure, clarity, and execution discipline to fast moving organisations.</p>
-      <a href="Anjali_DSylva_CV.pdf" class="button-outline" download>Download CV</a>
-      <a href="#contact" class="button-primary">Start a Conversation</a>
+      <p>
+        I partner with founders, CEOs, and leadership teams to bring structure, clarity, and execution discipline to fast-moving organisations.
+      </p>
+      <img src="images/about-image.jpg" alt="Working with leadership teams" class="about-image"> <!-- OPTIONAL -->
+      <div>
+        <a href="Anjali_DSylva_CV.pdf" class="button-outline" download>Download CV</a>
+        <a href="#contact" class="button-primary">Start a Conversation</a>
+      </div>
     </div>
   </div>
 </section>
@@ -349,12 +392,16 @@
 <section class="cred-strip">
   <div class="container">
     <div class="cred-logos">
-      <div class="logo-placeholder">Boots</div>
-      <div class="logo-placeholder">Superdrug</div>
-      <div class="logo-placeholder">Holland & Barrett</div>
-      <div class="logo-placeholder">Ocado</div>
-      <div class="logo-placeholder">Wishup</div>
-      <div class="logo-placeholder">The Good Food Group</div>
+      <img src="logos/EsteeLauder.jpg" alt="Estée Lauder">
+      <img src="logos/FreedmenTrust.png" alt="Freedmen Trust">
+      <img src="logos/GF.png" alt="GF">
+      <img src="logos/GPV.png" alt="Green Power Ventures">
+      <img src="logos/HayfordTrust.png" alt="Hayford Trust">
+      <img src="logos/KKR.png" alt="KKR">
+      <img src="logos/OptimalTech.png" alt="Optimal Tech">
+      <img src="logos/TTH.png" alt="TTH">
+      <img src="logos/UluPartners.png" alt="Ulu Partners">
+      <img src="logos/WGU.jpg" alt="Western Governors University">
     </div>
   </div>
 </section>
@@ -372,73 +419,71 @@
 
       <div class="service-card startup">
         <div class="service-header">
-          <!-- Building Icon -->
           <svg viewBox="0 0 24 24"><path d="M3 21h18v-2H3v2zM5 3h14v14H5V3zm2 2v10h10V5H7z"/></svg>
-          <h3>Small Company Setup & Backend Infrastructure (Startup Ops)</h3>
+          <h3>Small Company Setup & Backend Infrastructure</h3>
         </div>
+        <img src="services/startup-ops.jpg" alt="Startup operations" class="service-image"> <!-- OPTIONAL -->
         <ul>
           <li>Company formation coordination & entity setup support</li>
           <li>Business banking, payments & finance workflows</li>
-          <li>Accounting & invoicing systems (QuickBooks, Xero, billing ops)</li>
-          <li>Contractor & HR operations (onboarding, payroll, compliance)</li>
-          <li>Tools, systems & SOP setup (CRM, PM tools, documentation)</li>
-          <li>Legal & compliance coordination (NDAs, contracts, trackers)</li>
-          <li>Centralised document management & governance frameworks</li>
+          <li>Accounting & invoicing systems</li>
+          <li>Contractor & HR operations</li>
+          <li>Tools, systems & SOP setup</li>
+          <li>Legal & compliance coordination</li>
+          <li>Document management & governance</li>
         </ul>
         <div class="service-outcome">Outcome: Founders get a clean, scalable operational engine from day one.</div>
       </div>
 
       <div class="service-card va">
         <div class="service-header">
-          <!-- Check Icon -->
           <svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 12-12-1.5-1.5z"/></svg>
-          <h3>Virtual Assistance (Task-Based Execution)</h3>
+          <h3>Virtual Assistance</h3>
         </div>
+        <img src="services/virtual-assistance.jpg" alt="Virtual assistance" class="service-image"> <!-- OPTIONAL -->
         <ul>
-          <li>Calendar, inbox & scheduling management</li>
-          <li>Travel, meetings & logistics coordination</li>
-          <li>Data entry, research & reporting support</li>
-          <li>Document formatting & file management</li>
-          <li>CRM updates & admin maintenance</li>
-          <li>Basic finance admin (expenses, invoicing, follow-ups)</li>
+          <li>Calendar, inbox & scheduling</li>
+          <li>Travel & logistics</li>
+          <li>Research & reporting</li>
+          <li>Document management</li>
+          <li>CRM updates</li>
+          <li>Finance admin support</li>
         </ul>
-        <div class="service-outcome">Outcome: Leaders get time back and consistent execution without micromanagement.</div>
+        <div class="service-outcome">Outcome: Leaders get time back and consistent execution.</div>
       </div>
 
       <div class="service-card ea">
         <div class="service-header">
-          <!-- Briefcase Icon -->
           <svg viewBox="0 0 24 24"><path d="M10 2h4v2h5v4H5V4h5V2zm9 8v10H5V10h14z"/></svg>
-          <h3>Senior Executive Assistant (Strategic EA)</h3>
+          <h3>Senior Executive Assistant</h3>
         </div>
+        <img src="services/executive-assistant.jpg" alt="Executive assistant" class="service-image"> <!-- OPTIONAL -->
         <ul>
-          <li>CEO/Founder calendar & inbox ownership</li>
-          <li>Board & investor meeting coordination</li>
-          <li>Executive communications & stakeholder management</li>
-          <li>Meeting prep, briefs & follow-ups</li>
-          <li>Cross-team coordination & priority tracking</li>
-          <li>Confidential admin, documentation & reporting</li>
-          <li>Executive project management & delivery oversight</li>
+          <li>CEO calendar & inbox</li>
+          <li>Board & investor coordination</li>
+          <li>Executive communications</li>
+          <li>Meeting prep & follow-up</li>
+          <li>Priority tracking</li>
+          <li>Confidential reporting</li>
         </ul>
-        <div class="service-outcome">Outcome: Leaders stay focused on strategy while execution is handled with precision.</div>
+        <div class="service-outcome">Outcome: Focused leadership & smooth execution.</div>
       </div>
 
       <div class="service-card cos">
         <div class="service-header">
-          <!-- Compass Icon -->
           <svg viewBox="0 0 24 24"><path d="M12 2l4 8-8 4 4-8zm0 20c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10z"/></svg>
-          <h3>Chief of Staff–Level Support (Leadership & Operations)</h3>
+          <h3>Chief of Staff–Level Support</h3>
         </div>
+        <img src="services/chief-of-staff.jpg" alt="Chief of Staff" class="service-image"> <!-- OPTIONAL -->
         <ul>
-          <li>Translating strategy into operational plans</li>
-          <li>Company-wide priorities & OKR tracking</li>
-          <li>Cross-functional execution & accountability</li>
-          <li>Leadership meeting cadence & governance</li>
-          <li>Executive reporting & business rhythm</li>
-          <li>Process optimisation & operational scaling</li>
-          <li>Acting as a bridge between leadership and teams</li>
+          <li>Strategy to execution</li>
+          <li>OKRs & priorities</li>
+          <li>Cross-functional alignment</li>
+          <li>Leadership cadence</li>
+          <li>Executive reporting</li>
+          <li>Operational scaling</li>
         </ul>
-        <div class="service-outcome">Outcome: Leadership teams operate with clarity, alignment, and execution discipline.</div>
+        <div class="service-outcome">Outcome: Aligned leadership & disciplined execution.</div>
       </div>
 
     </div>
@@ -501,24 +546,6 @@
 
   scrollBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('nav a');
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 140;
-      if (pageYOffset >= sectionTop) current = section.getAttribute('id');
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + current) {
-        link.classList.add('active');
-      }
-    });
   });
 </script>
 
