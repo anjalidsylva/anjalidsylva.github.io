@@ -27,19 +27,19 @@ body {
   scroll-behavior: smooth;
 }
 
-/* TOP NAVIGATION */
+/* NAVIGATION */
 nav {
   position: sticky;
   top: 0;
   background: white;
-  padding: 15px 0;
+  padding: 18px 0;
   text-align: center;
   box-shadow: 0 2px 8px rgba(0,0,0,.05);
   z-index: 999;
 }
 
 nav a {
-  margin: 0 12px;
+  margin: 0 14px;
   text-decoration: none;
   color: var(--charcoal);
   font-weight: 600;
@@ -51,10 +51,10 @@ nav a.active {
   border-bottom: 2px solid var(--blue);
 }
 
-/* LOGO SPACE */
+/* TOP LOGO STRIP */
 .logo-top {
   text-align: center;
-  padding: 30px 0;
+  padding: 28px 0;
   background: white;
 }
 
@@ -62,24 +62,28 @@ nav a.active {
   height: 90px;
 }
 
-/* HERO */
-header {
+/* HERO SECTION */
+.hero {
   background: var(--charcoal);
   color: white;
-  padding: 80px 20px;
+  padding: 110px 20px;
   text-align: center;
 }
 
-h1 { font-weight: 700; }
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
 
 .subtitle {
   color: var(--bronze);
+  font-size: 18px;
 }
 
-/* LAYOUT */
+/* PAGE SECTIONS */
 section {
-  max-width: 1000px;
-  margin: 70px auto;
+  max-width: 1100px;
+  margin: 80px auto;
   padding: 0 20px;
 }
 
@@ -87,28 +91,28 @@ section {
 .two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 50px;
   align-items: center;
 }
 
 .two-col img {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 
-/* SERVICES GRID */
+/* PORTFOLIO-STYLE SERVICES */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
 }
 
-.service-card {
+.service-tile {
   background: white;
-  padding: 22px;
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0,0,0,.05);
-  border-top: 5px solid var(--blue);
+  padding: 26px;
+  border-radius: 14px;
+  box-shadow: 0 10px 22px rgba(0,0,0,.05);
+  border-top: 6px solid var(--blue);
 }
 
 /* CLIENT LOGOS */
@@ -125,12 +129,12 @@ section {
   opacity: 0.85;
 }
 
-/* TESTIMONIAL */
-.testimonial {
+/* TESTIMONIAL BAND */
+.testimonial-band {
   background: white;
-  padding: 30px;
+  padding: 40px;
   border-left: 6px solid var(--bronze);
-  border-radius: 12px;
+  border-radius: 14px;
 }
 
 /* BUTTONS */
@@ -141,7 +145,7 @@ section {
   background: var(--blue);
   color: white;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-family: "DM Sans", sans-serif;
 }
 
@@ -153,7 +157,7 @@ footer {
   color: white;
 }
 
-/* SOCIAL ICONS */
+/* SOCIAL ICON BUTTONS */
 .socials a {
   display: inline-flex;
   align-items: center;
@@ -163,11 +167,11 @@ footer {
   background: white;
   color: var(--charcoal);
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 600;
 }
 
-/* FLOATING WHATSAPP CHAT */
+/* WHATSAPP CHAT */
 .chat-btn {
   position: fixed;
   bottom: 70px;
@@ -202,7 +206,6 @@ footer {
 
 <body>
 
-<!-- NAVIGATION -->
 <nav>
   <a href="#about" id="tab-about">About</a>
   <a href="#services" id="tab-services">Services</a>
@@ -211,19 +214,17 @@ footer {
   <a href="#contact" id="tab-contact">Contact</a>
 </nav>
 
-<!-- LOGO -->
 <div class="logo-top">
   <img src="logos/logo-primary.png" alt="Anjali D’Sylva Logo">
 </div>
 
-<header>
+<div class="hero">
   <h1>Anjali D’Sylva</h1>
   <p class="subtitle">
     Fractional Chief of Staff • Executive Operations Partner
   </p>
-</header>
+</div>
 
-<!-- ABOUT -->
 <section id="about" class="two-col">
   <div>
     <h2>About me</h2>
@@ -234,9 +235,7 @@ footer {
 
     <p>
     I bring structure, clarity, and execution to fast-moving environments, combining hands-on
-    delivery with strategic operational leadership. Whether supporting at a task level or
-    operating as a Chief of Staff, my focus is building systems that allow leaders and
-    companies to scale with confidence.
+    delivery with strategic operational leadership.
     </p>
 
     <a class="btn" href="mailto:aljdsylva@gmail.com">Email me</a>
@@ -245,40 +244,34 @@ footer {
   <img src="headshot.jpg" alt="Anjali portrait">
 </section>
 
-<!-- SERVICES -->
 <section id="services">
 <h2>My services</h2>
 
 <div class="services-grid">
 
-<div class="service-card">
-<h3>1) Startup Ops</h3>
-<p>Company formation, banking, finance workflows, QuickBooks or Xero setup, contractor and HR operations, tools and SOPs, legal coordination, and centralised document governance.</p>
-<p><strong>Outcome:</strong> A clean, scalable operational engine from day one.</p>
+<div class="service-tile">
+<h3>Startup Ops</h3>
+<p>Company formation, banking, finance workflows, QuickBooks or Xero setup, contractor and HR operations, tools and SOPs, legal coordination, and document governance.</p>
 </div>
 
-<div class="service-card">
-<h3>2) Virtual Assistance</h3>
-<p>Calendar and inbox management, travel coordination, data entry, research, CRM updates, document formatting, and basic finance admin.</p>
-<p><strong>Outcome:</strong> Leaders regain time with consistent execution.</p>
+<div class="service-tile">
+<h3>Virtual Assistance</h3>
+<p>Calendar and inbox management, travel coordination, research, CRM updates, document formatting, and finance admin.</p>
 </div>
 
-<div class="service-card">
-<h3>3) Senior Executive Assistant</h3>
-<p>CEO calendar ownership, board coordination, stakeholder communications, meeting preparation, priority tracking, and confidential reporting.</p>
-<p><strong>Outcome:</strong> Leaders stay focused on strategy.</p>
+<div class="service-tile">
+<h3>Senior Executive Assistant</h3>
+<p>CEO calendar ownership, board coordination, stakeholder communications, meeting preparation, and priority tracking.</p>
 </div>
 
-<div class="service-card">
-<h3>4) Chief of Staff Support</h3>
-<p>Strategy translation into operations, OKR tracking, cross-team accountability, leadership cadence, executive reporting, and process optimisation.</p>
-<p><strong>Outcome:</strong> Clarity, alignment, and execution discipline.</p>
+<div class="service-tile">
+<h3>Chief of Staff Support</h3>
+<p>Strategy translation into operations, OKR tracking, leadership cadence, executive reporting, and process optimisation.</p>
 </div>
 
 </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience">
 <h2>Clients I have worked with</h2>
 
@@ -296,9 +289,8 @@ footer {
 </div>
 </section>
 
-<!-- TESTIMONIAL -->
 <section>
-<div class="testimonial">
+<div class="testimonial-band">
 <p>
 "Anjali brought calm, structure, and clarity to our operations. Her ability to align teams
 and keep projects moving made a real difference to our business."
@@ -307,7 +299,6 @@ and keep projects moving made a real difference to our business."
 </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
 <h2>Contact</h2>
 <p>Reach me via email or LinkedIn below.</p>
@@ -322,34 +313,12 @@ and keep projects moving made a real difference to our business."
 <p>© <script>document.write(new Date().getFullYear());</script> Anjali D’Sylva</p>
 </footer>
 
-<!-- WHATSAPP CHAT -->
 <a class="chat-btn" href="https://wa.me/919082231518" target="_blank">💬 Chat on WhatsApp</a>
 
-<!-- SCROLL UP -->
 <a class="scroll-up" href="#top">↑</a>
 
 <script>
-// Highlight nav tabs on scroll
 const sections = document.querySelectorAll("section");
 const tabs = {
   about: document.getElementById("tab-about"),
   services: document.getElementById("tab-services"),
-  experience: document.getElementById("tab-experience"),
-  contact: document.getElementById("tab-contact")
-};
-
-window.addEventListener("scroll", () => {
-  let current = "";
-  sections.forEach(sec => {
-    const top = window.scrollY;
-    const offset = sec.offsetTop - 120;
-    if (top >= offset) current = sec.id;
-  });
-
-  Object.values(tabs).forEach(tab => tab.classList.remove("active"));
-  if (tabs[current]) tabs[current].classList.add("active");
-});
-</script>
-
-</body>
-</html>
