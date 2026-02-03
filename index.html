@@ -17,17 +17,41 @@
   --light-bg: #F5F7FA;
 }
 
-* { box-sizing: border-box; }
-
+/* GLOBAL TYPOGRAPHY */
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
   background: var(--light-bg);
   color: var(--charcoal);
-  line-height: 1.7;
+  line-height: 1.75;
+  letter-spacing: 0.25px;
 }
 
-/* ---------- TOP BANNER ---------- */
+h1 {
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  margin-bottom: 18px;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.1px;
+}
+
+p {
+  font-size: 17px;
+  color: #3b475b;
+}
+
+/* TOP BANNER */
 .top-banner {
   background: white;
   box-shadow: 0 6px 24px rgba(0,0,0,0.06);
@@ -44,46 +68,61 @@ body {
 }
 
 .top-inner img {
-  height: 64px;
+  height: 66px;
 }
 
-.name-block h1 {
-  margin: 0;
-  font-size: 26px;
-  font-weight: 700;
-}
-
-.name-block p {
-  margin: 4px 0 0;
-  font-size: 13px;
-  color: var(--bronze);
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-}
-
+/* NAVIGATION (UPPERCASE + ANIMATED UNDERLINE) */
 nav a {
   margin-left: 18px;
   text-decoration: none;
   font-family: "DM Sans", sans-serif;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 16px;
   color: var(--charcoal);
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+/* animated underline */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--blue-main);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 nav a:hover {
   color: var(--blue-main);
 }
 
-/* ---------- TAGLINE ---------- */
+/* TAGLINE (REWRITTEN) */
 .tagline {
   text-align: center;
-  padding: 26px 20px;
+  padding: 28px 20px;
   background: var(--blue-glass);
   color: white;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
+  font-size: 16px;
 }
 
-/* ---------- CONTACT BANNER ---------- */
+/* SECTIONS */
+section {
+  max-width: 1100px;
+  margin: 90px auto;
+  padding: 0 24px;
+}
+
+/* CONTACT BANNER */
 .contact-banner {
   background: linear-gradient(180deg, #1F2937, #17202A);
   padding: 70px 24px;
@@ -95,26 +134,9 @@ nav a:hover {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 48px;
-  align-items: start;
 }
 
-/* LEFT CONTACT ACTIONS */
-.contact-actions h2 {
-  color: white;
-  margin-bottom: 10px;
-}
-
-.contact-actions p {
-  color: #d1d5db;
-  margin-bottom: 28px;
-}
-
-.contact-links {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
+/* CONTACT BUTTONS */
 .contact-link {
   display: inline-flex;
   align-items: center;
@@ -122,16 +144,9 @@ nav a:hover {
   padding: 14px 22px;
   border-radius: 14px;
   font-family: "DM Sans", sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
   color: white;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-
-.contact-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.35);
 }
 
 .email-btn {
@@ -142,19 +157,12 @@ nav a:hover {
   background: linear-gradient(135deg,#0077b5,#005983);
 }
 
-/* ---------- FORM WITH SUBTLE ANIMATIONS ---------- */
+/* FORM */
 .contact-form {
   background: white;
   padding: 34px;
   border-radius: 20px;
   box-shadow: 0 24px 60px rgba(0,0,0,0.18);
-  transition: opacity .4s ease, transform .4s ease;
-}
-
-.contact-form label {
-  display: block;
-  font-weight: 600;
-  margin: 16px 0 6px;
 }
 
 .contact-form input,
@@ -169,7 +177,6 @@ nav a:hover {
   transition: all .25s ease;
 }
 
-/* subtle field animation */
 .contact-form input:focus,
 .contact-form textarea:focus,
 .contact-form select:focus {
@@ -179,42 +186,16 @@ nav a:hover {
   transform: translateY(-1px);
 }
 
-.contact-form textarea {
-  min-height: 90px;
-}
-
-.contact-form button {
-  margin-top: 20px;
-  padding: 14px 22px;
-  border: none;
-  border-radius: 14px;
-  background: var(--blue-glass);
-  color: white;
-  font-family: "DM Sans", sans-serif;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform .2s ease;
-}
-
-.contact-form button:hover {
-  transform: translateY(-2px);
-}
-
-/* ---------- THANK YOU STATE ---------- */
+/* THANK YOU STATE */
 .thank-you {
   display: none;
   background: white;
   padding: 40px;
   border-radius: 20px;
   text-align: center;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.18);
 }
 
-.thank-you h3 {
-  margin-top: 0;
-}
-
-/* ---------- FLOATING CHAT ---------- */
+/* FLOATING CHAT */
 .chat-float {
   position: fixed;
   bottom: 26px;
@@ -224,11 +205,10 @@ nav a:hover {
   padding: 14px 22px;
   border-radius: 30px;
   text-decoration: none;
-  font-weight: 600;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+  font-weight: 700;
 }
 
-/* responsive */
+/* RESPONSIVE */
 @media (max-width: 900px) {
   .contact-inner {
     grid-template-columns: 1fr;
@@ -246,12 +226,10 @@ nav a:hover {
 <div class="top-banner">
   <div class="top-inner">
     <img src="logos/logo-primary.png" alt="Anjali D’Sylva Logo">
-
     <div class="name-block">
       <h1>Anjali D’Sylva</h1>
       <p>Services & Strategy</p>
     </div>
-
     <nav>
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -262,29 +240,21 @@ nav a:hover {
   </div>
 </div>
 
+<!-- NEW TAGLINE -->
 <div class="tagline">
-  Helping founders, leaders, teams and businesses to build, grow and run
+  Helping Founders, Leaders, Teams, and Businesses Build, Grow, and Run with Clarity, Structure, and Confidence.
 </div>
 
 <!-- CONTACT BANNER -->
 <div id="contact" class="contact-banner">
   <div class="contact-inner">
 
-    <!-- LEFT -->
-    <div class="contact-actions">
-      <h2>Let’s connect</h2>
-      <p>
-        If you’re exploring operational support or leadership partnership,
-        I’d love to understand your context and goals.
-      </p>
-
-      <div class="contact-links">
-        <a class="contact-link email-btn" href="mailto:aljdsylva@gmail.com">📧 Email</a>
-        <a class="contact-link linkedin-btn" href="https://www.linkedin.com/in/anjalidsylva" target="_blank">🔗 LinkedIn</a>
-      </div>
+    <div>
+      <h2 style="color:white;">Let’s connect</h2>
+      <a class="contact-link email-btn" href="mailto:aljdsylva@gmail.com">📧 Email</a>
+      <a class="contact-link linkedin-btn" href="https://www.linkedin.com/in/anjalidsylva" target="_blank">🔗 LinkedIn</a>
     </div>
 
-    <!-- RIGHT FORM -->
     <form id="leadForm" class="contact-form">
       <label>Tell me about you</label>
       <textarea id="aboutYou" required></textarea>
@@ -302,11 +272,9 @@ nav a:hover {
       <button type="submit">Send message</button>
     </form>
 
-    <!-- THANK YOU STATE -->
     <div id="thankYou" class="thank-you">
       <h3>Thank you for reaching out</h3>
-      <p>I’ve received your message and will get back to you shortly.</p>
-      <p>In the meantime, feel free to connect with me on LinkedIn or WhatsApp.</p>
+      <p>I’ll be in touch shortly.</p>
     </div>
 
   </div>
@@ -331,11 +299,9 @@ document.getElementById("leadForm").addEventListener("submit", function(e) {
 
   const mailtoLink = "mailto:aljdsylva@gmail.com?subject=" + subject + "&body=" + body;
 
-  // show thank you state
   document.getElementById("leadForm").style.display = "none";
   document.getElementById("thankYou").style.display = "block";
 
-  // open email client
   setTimeout(() => {
     window.location.href = mailtoLink;
   }, 500);
