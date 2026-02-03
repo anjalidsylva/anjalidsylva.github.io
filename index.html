@@ -6,11 +6,12 @@
 
 <title>Anjali D’Sylva | Executive Operations</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=DM+Sans:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=DM+Sans:wght@500;700&display=swap" rel="stylesheet>
 
 <style>
 :root {
   --blue: #4A6FA5;
+  --blue-shine: linear-gradient(135deg, #5f82b9, #4A6FA5);
   --bronze: #C9A66B;
   --charcoal: #1F2937;
   --light-bg: #F1F5F9;
@@ -27,19 +28,44 @@ body {
   scroll-behavior: smooth;
 }
 
-/* NAVIGATION */
-nav {
+/* SINGLE TOP BANNER (ALL-IN-ONE) */
+.top-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
   position: sticky;
   top: 0;
-  background: white;
-  padding: 18px 0;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,.05);
-  z-index: 999;
+  z-index: 1000;
 }
 
+/* LEFT SIDE: LOGO + NAME + SUBTITLE */
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-wrap img {
+  height: 55px;
+}
+
+.brand-text h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.brand-text p {
+  margin: 2px 0 0;
+  color: var(--bronze);
+  font-size: 14px;
+}
+
+/* NAV TABS */
 nav a {
-  margin: 0 14px;
+  margin: 0 12px;
   text-decoration: none;
   color: var(--charcoal);
   font-weight: 600;
@@ -51,33 +77,21 @@ nav a.active {
   border-bottom: 2px solid var(--blue);
 }
 
-/* TOP LOGO STRIP */
-.logo-top {
+/* TAGLINE STRIP UNDER BANNER */
+.tagline-strip {
   text-align: center;
-  padding: 28px 0;
-  background: white;
+  padding: 12px;
+  background: var(--charcoal);
+  color: white;
+  font-size: 15px;
 }
 
-.logo-top img {
-  height: 90px;
-}
-
-/* HERO SECTION */
+/* HERO (kept but simplified) */
 .hero {
   background: var(--charcoal);
   color: white;
-  padding: 110px 20px;
+  padding: 90px 20px;
   text-align: center;
-}
-
-.hero h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  color: var(--bronze);
-  font-size: 18px;
 }
 
 /* PAGE SECTIONS */
@@ -100,18 +114,18 @@ section {
   border-radius: 14px;
 }
 
-/* PORTFOLIO-STYLE SERVICES */
+/* SERVICES GRID */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
 }
 
 .service-tile {
   background: white;
-  padding: 26px;
+  padding: 22px;
   border-radius: 14px;
-  box-shadow: 0 10px 22px rgba(0,0,0,.05);
+  box-shadow: 0 10px 22px rgba(0,0,0,.06);
   border-top: 6px solid var(--blue);
 }
 
@@ -129,60 +143,55 @@ section {
   opacity: 0.85;
 }
 
-/* TESTIMONIAL BAND */
+/* TESTIMONIAL */
 .testimonial-band {
   background: white;
   padding: 40px;
   border-left: 6px solid var(--bronze);
   border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.04);
 }
 
-/* BUTTONS */
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 22px;
-  background: var(--blue);
-  color: white;
-  text-decoration: none;
-  border-radius: 10px;
-  font-family: "DM Sans", sans-serif;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 40px 20px;
+/* BOTTOM CONTACT BANNER */
+.contact-banner {
   background: var(--charcoal);
-  color: white;
+  padding: 35px 20px;
+  text-align: center;
 }
 
-/* SOCIAL ICON BUTTONS */
-.socials a {
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  margin: 10px;
-  padding: 10px 16px;
-  background: white;
-  color: var(--charcoal);
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 12px;
   text-decoration: none;
-  border-radius: 10px;
   font-weight: 600;
+  font-family: "DM Sans", sans-serif;
+  box-shadow: 0 6px 14px rgba(0,0,0,.18);
 }
 
-/* WHATSAPP CHAT */
+/* BUTTON STYLES */
+.email-btn {
+  background: #ffffff;
+  color: var(--charcoal);
+}
+
+.linkedin-btn {
+  background: #0A66C2;
+  color: white;
+}
+
 .chat-btn {
-  position: fixed;
-  bottom: 70px;
-  right: 20px;
   background: #25D366;
   color: white;
-  padding: 14px 18px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  box-shadow: 0 6px 12px rgba(0,0,0,.2);
 }
 
 /* SCROLL UP */
@@ -200,78 +209,132 @@ footer {
 
 @media (max-width: 700px) {
   .two-col { grid-template-columns: 1fr; }
+  .top-banner { flex-direction: column; gap: 12px; }
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <a href="#about" id="tab-about">About</a>
-  <a href="#services" id="tab-services">Services</a>
-  <a href="#experience" id="tab-experience">Experience</a>
-  <a href="Anjali_DSylva_CV.pdf" target="_blank">Download CV</a>
-  <a href="#contact" id="tab-contact">Contact</a>
-</nav>
+<!-- SINGLE TOP BANNER -->
+<div class="top-banner">
+  <div class="brand-wrap">
+    <img src="logos/logo-primary.png" alt="Anjali D’Sylva Logo">
+    <div class="brand-text">
+      <h1>Anjali D’Sylva</h1>
+      <p>Services & Strategy</p>
+    </div>
+  </div>
 
-<div class="logo-top">
-  <img src="logos/logo-primary.png" alt="Anjali D’Sylva Logo">
+  <nav>
+    <a href="#about" id="tab-about">About</a>
+    <a href="#services" id="tab-services">Services</a>
+    <a href="#experience" id="tab-experience">Experience</a>
+    <a href="Anjali_DSylva_CV.pdf" target="_blank">Download CV</a>
+    <a href="#contact" id="tab-contact">Contact</a>
+  </nav>
 </div>
 
-<div class="hero">
-  <h1>Anjali D’Sylva</h1>
-  <p class="subtitle">
-    Fractional Chief of Staff • Executive Operations Partner
-  </p>
+<div class="tagline-strip">
+Helping Founders, Leaders, Teams and Business to build, grow and run.
 </div>
 
+<!-- HERO -->
+<div class="hero"></div>
+
+<!-- ABOUT -->
 <section id="about" class="two-col">
   <div>
     <h2>About me</h2>
     <p>
-    I help founders and leadership teams build, run, and scale companies by setting up
-    the operational backbone from early-stage setup to executive and leadership operations.
+    I help founders and leadership teams build, run, and scale companies by setting up the operational backbone from early-stage setup to executive and leadership operations. In my career so far, I’ve had the opportunity to support founders and leaders across a range of industries particularly in Fin ops, Tech, renewable energy, education, executive consulting and coaching, retail, media and digital operations which has given me a strong foundation for a role where versatility and strategy are key.
     </p>
 
     <p>
-    I bring structure, clarity, and execution to fast-moving environments, combining hands-on
-    delivery with strategic operational leadership.
+    I bring structure and execution as a fractional team member in fast moving and tenured environments combining hands on delivery with strategic operational leadership. Whether supporting at a task level or operating as a Chief of Staff, my focus is building and running systems that allow leaders and companies to scale with confidence.
     </p>
 
-    <a class="btn" href="mailto:aljdsylva@gmail.com">Email me</a>
+    <p>
+    Working closely with founders has developed my emotional intelligence and adaptability, understanding when to step in, when to push forward, and when to quietly handle things in the background.
+    </p>
+
+    <p>
+    Working remotely over the last 5 years in a seasoned home office has made me highly structured and self reliant. I keep constant communication through email, Slack, Teams and messenger apps.
+    </p>
   </div>
 
   <img src="headshot.jpg" alt="Anjali portrait">
 </section>
 
+<!-- SERVICES -->
 <section id="services">
 <h2>My services</h2>
+
+<p>
+I help founders and leadership teams build, run, and scale companies by setting up the operational backbone from early-stage setup to executive and leadership operations. My work spans four levels of support.
+</p>
 
 <div class="services-grid">
 
 <div class="service-tile">
-<h3>Startup Ops</h3>
-<p>Company formation, banking, finance workflows, QuickBooks or Xero setup, contractor and HR operations, tools and SOPs, legal coordination, and document governance.</p>
+<h3>1) Startup Ops</h3>
+<ul>
+<li>Company formation coordination & entity setup support</li>
+<li>Business banking, payments & finance workflows</li>
+<li>Accounting & invoicing systems</li>
+<li>Contractor & HR operations</li>
+<li>Tools, systems & SOP setup</li>
+<li>Legal & compliance coordination</li>
+<li>Centralised document management & governance frameworks</li>
+</ul>
+<p><strong>Outcome:</strong> Founders get a clean, scalable operational engine from day one.</p>
 </div>
 
 <div class="service-tile">
-<h3>Virtual Assistance</h3>
-<p>Calendar and inbox management, travel coordination, research, CRM updates, document formatting, and finance admin.</p>
+<h3>2) Virtual Assistance</h3>
+<ul>
+<li>Calendar, inbox & scheduling management</li>
+<li>Travel, meetings & logistics coordination</li>
+<li>Data entry, research & reporting support</li>
+<li>Document formatting & file management</li>
+<li>CRM updates & admin maintenance</li>
+<li>Basic finance admin</li>
+</ul>
+<p><strong>Outcome:</strong> Leaders get time back and consistent execution without micromanagement.</p>
 </div>
 
 <div class="service-tile">
-<h3>Senior Executive Assistant</h3>
-<p>CEO calendar ownership, board coordination, stakeholder communications, meeting preparation, and priority tracking.</p>
+<h3>3) Senior Executive Assistant</h3>
+<ul>
+<li>CEO/Founder calendar & inbox ownership</li>
+<li>Board & investor meeting coordination</li>
+<li>Executive communications & stakeholder management</li>
+<li>Meeting prep, briefs & follow-ups</li>
+<li>Cross-team coordination & priority tracking</li>
+<li>Confidential admin, documentation & reporting</li>
+<li>Executive project management & delivery oversight</li>
+</ul>
+<p><strong>Outcome:</strong> Leaders stay focused on strategy while execution is handled with precision.</p>
 </div>
 
 <div class="service-tile">
-<h3>Chief of Staff Support</h3>
-<p>Strategy translation into operations, OKR tracking, leadership cadence, executive reporting, and process optimisation.</p>
+<h3>4) Chief of Staff Level Support</h3>
+<ul>
+<li>Translating strategy into operational plans</li>
+<li>Company-wide priorities & OKR tracking</li>
+<li>Cross-functional execution & accountability</li>
+<li>Leadership meeting cadence & governance</li>
+<li>Executive reporting & business rhythm</li>
+<li>Process optimisation & operational scaling</li>
+<li>Acting as a bridge between leadership and teams</li>
+</ul>
+<p><strong>Outcome:</strong> Leadership teams operate with clarity, alignment, and execution discipline.</p>
 </div>
 
 </div>
 </section>
 
+<!-- EXPERIENCE -->
 <section id="experience">
 <h2>Clients I have worked with</h2>
 
@@ -299,21 +362,28 @@ and keep projects moving made a real difference to our business."
 </div>
 </section>
 
-<section id="contact">
-<h2>Contact</h2>
-<p>Reach me via email or LinkedIn below.</p>
+<!-- BOTTOM CONTACT BANNER -->
+<div class="contact-banner" id="contact">
+  <div class="contact-buttons">
 
-<div class="socials">
-<a href="mailto:aljdsylva@gmail.com">📧 Email</a>
-<a href="https://www.linkedin.com/in/anjalidsylva" target="_blank">🔗 LinkedIn</a>
+    <a class="cta-btn email-btn" href="mailto:aljdsylva@gmail.com">
+      📧 Email
+    </a>
+
+    <a class="cta-btn linkedin-btn" href="https://www.linkedin.com/in/anjalidsylva" target="_blank">
+      🔗 LinkedIn
+    </a>
+
+    <a class="cta-btn chat-btn" href="https://wa.me/919082231518" target="_blank">
+      💬 Chat
+    </a>
+
+  </div>
 </div>
-</section>
 
 <footer>
 <p>© <script>document.write(new Date().getFullYear());</script> Anjali D’Sylva</p>
 </footer>
-
-<a class="chat-btn" href="https://wa.me/919082231518" target="_blank">💬 Chat on WhatsApp</a>
 
 <a class="scroll-up" href="#top">↑</a>
 
@@ -322,3 +392,22 @@ const sections = document.querySelectorAll("section");
 const tabs = {
   about: document.getElementById("tab-about"),
   services: document.getElementById("tab-services"),
+  experience: document.getElementById("tab-experience"),
+  contact: document.getElementById("tab-contact")
+};
+
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(sec => {
+    const top = window.scrollY;
+    const offset = sec.offsetTop - 120;
+    if (top >= offset) current = sec.id;
+  });
+
+  Object.values(tabs).forEach(tab => tab.classList.remove("active"));
+  if (tabs[current]) tabs[current].classList.add("active");
+});
+</script>
+
+</body>
+</html>
