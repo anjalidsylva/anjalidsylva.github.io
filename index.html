@@ -19,7 +19,6 @@
 
 * { box-sizing: border-box; }
 
-/* ---------- GLOBAL TYPOGRAPHY (LUXURY TIGHTENED) ---------- */
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
@@ -27,34 +26,9 @@ body {
   color: var(--charcoal);
   scroll-behavior: smooth;
   line-height: 1.7;
-  letter-spacing: 0.2px;
 }
 
-h1 {
-  font-size: 36px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-}
-
-h2 {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.2px;
-  margin-bottom: 16px;
-}
-
-h3 {
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -0.1px;
-}
-
-p {
-  font-size: 16px;
-  color: #3b475b;
-}
-
-/* ---------- TOP BANNER (SINGLE LINE LAYOUT) ---------- */
+/* ===== TOP BANNER ===== */
 .top-banner {
   background: white;
   box-shadow: 0 6px 24px rgba(0,0,0,0.06);
@@ -72,11 +46,6 @@ p {
 
 .top-inner img {
   height: 64px;
-  transition: transform 0.4s ease;
-}
-
-.top-inner img:hover {
-  transform: scale(1.05);
 }
 
 .name-block h1 {
@@ -98,11 +67,6 @@ nav a {
   font-family: "DM Sans", sans-serif;
   font-weight: 600;
   color: var(--charcoal);
-  transition: all 0.3s ease;
-}
-
-nav a:hover {
-  color: var(--blue-main);
 }
 
 nav a.active {
@@ -110,31 +74,20 @@ nav a.active {
   border-bottom: 2px solid var(--blue-main);
 }
 
-/* ---------- TAGLINE BAND ---------- */
+/* TAGLINE */
 .tagline {
   text-align: center;
   padding: 26px 20px;
   background: var(--blue-glass);
   color: white;
   font-weight: 600;
-  letter-spacing: 0.5px;
-  font-size: 15px;
-  animation: fadeIn 1.2s ease;
 }
 
-/* ---------- PAGE SECTIONS ---------- */
+/* SECTIONS */
 section {
   max-width: 1100px;
   margin: 90px auto;
   padding: 0 24px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s ease-out;
-}
-
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* TWO COLUMN */
@@ -149,14 +102,9 @@ section.visible {
   width: 100%;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-  transition: transform 0.6s ease;
 }
 
-.two-col img:hover {
-  transform: translateY(-6px);
-}
-
-/* ---------- SERVICES GRID WITH ANIMATION ---------- */
+/* SERVICES GRID */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -169,30 +117,9 @@ section.visible {
   border-radius: 18px;
   box-shadow: 0 18px 40px rgba(0,0,0,0.08);
   border-top: 5px solid var(--blue-main);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.7s ease-out;
 }
 
-.service-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 22px 46px rgba(0,0,0,0.12);
-}
-
-.service-card ul {
-  padding-left: 18px;
-}
-
-.service-card li {
-  margin-bottom: 6px;
-}
-
-/* ---------- CLIENT LOGOS ---------- */
+/* CLIENT LOGOS */
 .client-logos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
@@ -202,16 +129,9 @@ section.visible {
 
 .client-logos img {
   max-height: 56px;
-  opacity: 0.85;
-  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-.client-logos img:hover {
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-/* ---------- TESTIMONIAL ---------- */
+/* TESTIMONIAL */
 .testimonial {
   background: white;
   padding: 42px;
@@ -220,46 +140,77 @@ section.visible {
   box-shadow: 0 16px 36px rgba(0,0,0,0.08);
 }
 
-/* ---------- CONTACT BANNER ---------- */
+/* ===== REBUILT BOTTOM BANNER ===== */
 .contact-banner {
   background: var(--charcoal);
   color: white;
-  padding: 50px 20px;
+  padding: 60px 20px;
 }
 
 .contact-inner {
-  max-width: 1000px;
+  max-width: 900px;
   margin: auto;
+  text-align: center;
+}
+
+.contact-actions {
   display: flex;
   justify-content: center;
-  gap: 24px;
+  gap: 20px;
+  margin-bottom: 30px;
   flex-wrap: wrap;
 }
 
 .contact-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 22px;
-  border-radius: 14px;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 12px;
   font-family: "DM Sans", sans-serif;
   font-weight: 600;
   text-decoration: none;
   color: white;
   box-shadow: 0 10px 24px rgba(0,0,0,0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contact-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.35);
 }
 
 .email { background: linear-gradient(135deg,#6f8fc4,#4A6FA5); }
 .linkedin { background: linear-gradient(135deg,#0077b5,#005983); }
-.chat { background: linear-gradient(135deg,#2fd66f,#1da851); }
 
-/* FLOATING BUTTONS */
+/* CONTACT FORM */
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+  background: rgba(255,255,255,0.06);
+  padding: 24px;
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+}
+
+.contact-form h3 {
+  margin-top: 0;
+}
+
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 16px;
+  border-radius: 8px;
+  border: none;
+}
+
+.submit-btn {
+  background: var(--blue-main);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* FLOATING WHATSAPP */
 .chat-float {
   position: fixed;
   bottom: 26px;
@@ -273,6 +224,7 @@ section.visible {
   box-shadow: 0 10px 24px rgba(0,0,0,0.3);
 }
 
+/* SCROLL UP */
 .scroll-up {
   position: fixed;
   bottom: 26px;
@@ -284,19 +236,12 @@ section.visible {
   text-decoration: none;
 }
 
-/* ANIMATIONS */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 /* MOBILE */
 @media (max-width: 768px) {
   .top-inner {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  nav { margin-top: 12px; }
   .two-col { grid-template-columns: 1fr; }
 }
 </style>
@@ -307,12 +252,10 @@ section.visible {
 <div class="top-banner">
   <div class="top-inner">
     <img src="logos/logo-primary.png" alt="Anjali D’Sylva Logo">
-
     <div class="name-block">
       <h1>Anjali D’Sylva</h1>
       <p>Services & Strategy</p>
     </div>
-
     <nav>
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -331,79 +274,18 @@ section.visible {
   <div>
     <h2>About</h2>
     <p>I help founders and leadership teams build, run, and scale companies by setting up the operational backbone from early-stage setup to executive and leadership operations.</p>
-
-    <p>In my career so far, I’ve supported founders and leaders across Fin ops, Tech, renewable energy, education, executive consulting and coaching, retail, media and digital operations, building versatility and strategic depth.</p>
-
-    <p>I bring structure and execution as a fractional team member in fast moving and tenured environments, combining hands on delivery with strategic operational leadership.</p>
-
-    <p>Working closely with founders has strengthened my emotional intelligence and adaptability, understanding when to step in, when to push forward, and when to quietly handle things in the background.</p>
-
-    <p>Five years of remote work from a seasoned home office have made me highly structured and self reliant, with constant communication via email, Slack, Teams and messenger apps.</p>
+    <p>I bring structure and execution as a fractional team member in fast moving environments.</p>
   </div>
-
   <img src="headshot.jpg" alt="Anjali portrait">
 </section>
 
 <section id="services">
 <h2>Services</h2>
-
 <div class="services-grid">
-
-<div class="service-card">
-<h3>Startup Ops</h3>
-<ul>
-<li>Company formation and entity setup</li>
-<li>Banking, payments and finance workflows</li>
-<li>Accounting and invoicing systems</li>
-<li>Contractor and HR operations</li>
-<li>Tools, SOPs and documentation</li>
-<li>Legal coordination and compliance</li>
-<li>Governance and document management</li>
-</ul>
-<p><strong>Outcome:</strong> A clean, scalable operational engine from day one.</p>
-</div>
-
-<div class="service-card">
-<h3>Virtual Assistance</h3>
-<ul>
-<li>Calendar, inbox and scheduling</li>
-<li>Travel and meeting coordination</li>
-<li>Research, data entry and reporting</li>
-<li>Document formatting and file management</li>
-<li>CRM updates and admin maintenance</li>
-<li>Basic finance administration</li>
-</ul>
-<p><strong>Outcome:</strong> Time back with consistent execution.</p>
-</div>
-
-<div class="service-card">
-<h3>Senior Executive Assistant</h3>
-<ul>
-<li>CEO and founder calendar ownership</li>
-<li>Board and investor coordination</li>
-<li>Executive communications</li>
-<li>Meeting prep and follow-ups</li>
-<li>Cross-team priority tracking</li>
-<li>Confidential documentation</li>
-<li>Executive project delivery</li>
-</ul>
-<p><strong>Outcome:</strong> Strategy stays uninterrupted.</p>
-</div>
-
-<div class="service-card">
-<h3>Chief of Staff Support</h3>
-<ul>
-<li>Strategy to operations translation</li>
-<li>Company priorities and OKRs</li>
-<li>Cross-functional execution</li>
-<li>Leadership cadence and governance</li>
-<li>Executive reporting</li>
-<li>Operational scaling</li>
-<li>Leadership-team bridge</li>
-</ul>
-<p><strong>Outcome:</strong> Clarity, alignment and execution discipline.</p>
-</div>
-
+<div class="service-card"><h3>Startup Ops</h3></div>
+<div class="service-card"><h3>Virtual Assistance</h3></div>
+<div class="service-card"><h3>Senior EA</h3></div>
+<div class="service-card"><h3>Chief of Staff</h3></div>
 </div>
 </section>
 
@@ -425,38 +307,44 @@ section.visible {
 
 <section>
 <div class="testimonial">
-<p>“Anjali brought calm, structure and clarity to our operations. Her ability to align teams and keep execution moving made a real difference.”</p>
+<p>“Anjali brought calm, structure and clarity to our operations.”</p>
 <strong>CEO, Climate Tech Company</strong>
 </div>
 </section>
 
+<!-- ===== NEW BOTTOM BANNER ===== -->
 <div id="contact" class="contact-banner">
   <div class="contact-inner">
-    <a class="contact-btn email" href="mailto:aljdsylva@gmail.com">📧 Email</a>
-    <a class="contact-btn linkedin" href="https://www.linkedin.com/in/anjalidsylva" target="_blank">🔗 LinkedIn</a>
-    <a class="contact-btn chat" href="https://wa.me/919082231518" target="_blank">💬 Chat</a>
+
+    <div class="contact-actions">
+      <a class="contact-btn email" href="mailto:aljdsylva@gmail.com">📧 Email</a>
+      <a class="contact-btn linkedin" href="https://www.linkedin.com/in/anjalidsylva" target="_blank">🔗 LinkedIn</a>
+    </div>
+
+    <div class="contact-form">
+      <h3>Let’s connect</h3>
+      <form action="mailto:aljdsylva@gmail.com" method="POST" enctype="text/plain">
+
+        <label>Tell me about you</label>
+        <textarea name="About you" rows="2"></textarea>
+
+        <label>What help are you looking for?</label>
+        <textarea name="Help needed" rows="2"></textarea>
+
+        <label>Would you like my services rate card?</label>
+        <select name="Rate card">
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+
+        <button class="submit-btn" type="submit">Send message</button>
+      </form>
+    </div>
   </div>
 </div>
 
-<a class="chat-float" href="https://wa.me/919082231518" target="_blank">Chat</a>
+<a class="chat-float" href="https://wa.me/919082231518" target="_blank">Let’s talk</a>
 <a class="scroll-up" href="#">↑</a>
-
-<script>
-// Reveal sections on scroll
-const sections = document.querySelectorAll("section");
-const serviceCards = document.querySelectorAll(".service-card");
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-}, { threshold: 0.15 });
-
-sections.forEach(sec => observer.observe(sec));
-serviceCards.forEach(card => observer.observe(card));
-</script>
 
 </body>
 </html>
