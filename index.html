@@ -17,14 +17,41 @@
   --muted: #72849D;
 }
 
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
   background: var(--light-bg);
   color: var(--charcoal);
+  scroll-behavior: smooth;
 }
 
-/* TOP LOGO SPACE */
+/* TOP NAVIGATION */
+nav {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 15px 0;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  z-index: 999;
+}
+
+nav a {
+  margin: 0 12px;
+  text-decoration: none;
+  color: var(--charcoal);
+  font-weight: 600;
+  font-family: "DM Sans", sans-serif;
+}
+
+nav a.active {
+  color: var(--blue);
+  border-bottom: 2px solid var(--blue);
+}
+
+/* LOGO SPACE */
 .logo-top {
   text-align: center;
   padding: 30px 0;
@@ -35,7 +62,7 @@ body {
   height: 90px;
 }
 
-/* HERO HEADER */
+/* HERO */
 header {
   background: var(--charcoal);
   color: white;
@@ -43,18 +70,20 @@ header {
   text-align: center;
 }
 
+h1 { font-weight: 700; }
+
 .subtitle {
   color: var(--bronze);
-  letter-spacing: 0.5px;
 }
 
 /* LAYOUT */
 section {
-  max-width: 900px;
-  margin: 60px auto;
+  max-width: 1000px;
+  margin: 70px auto;
   padding: 0 20px;
 }
 
+/* TWO COLUMN */
 .two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -67,18 +96,19 @@ section {
   border-radius: 12px;
 }
 
-/* BRAND BAR */
-.brand-bar {
-  height: 6px;
-  background: linear-gradient(90deg, var(--blue), var(--bronze), var(--charcoal));
+/* SERVICES GRID */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
 }
 
-/* CARDS */
-.card {
+.service-card {
   background: white;
-  padding: 30px;
+  padding: 22px;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.05);
+  border-top: 5px solid var(--blue);
 }
 
 /* CLIENT LOGOS */
@@ -91,9 +121,8 @@ section {
 }
 
 .client-logos img {
-  max-height: 70px;
-  filter: grayscale(100%);
-  opacity: 0.8;
+  max-height: 60px;
+  opacity: 0.85;
 }
 
 /* TESTIMONIAL */
@@ -124,9 +153,11 @@ footer {
   color: white;
 }
 
-/* SOCIAL BUTTONS */
+/* SOCIAL ICONS */
 .socials a {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   margin: 10px;
   padding: 10px 16px;
   background: white;
@@ -136,12 +167,12 @@ footer {
   font-weight: 600;
 }
 
-/* FLOATING CHAT BUTTON */
+/* FLOATING WHATSAPP CHAT */
 .chat-btn {
   position: fixed;
-  bottom: 20px;
+  bottom: 70px;
   right: 20px;
-  background: var(--blue);
+  background: #25D366;
   color: white;
   padding: 14px 18px;
   border-radius: 30px;
@@ -150,19 +181,37 @@ footer {
   box-shadow: 0 6px 12px rgba(0,0,0,.2);
 }
 
+/* SCROLL UP */
+.scroll-up {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--charcoal);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-weight: 700;
+}
+
 @media (max-width: 700px) {
-  .two-col {
-    grid-template-columns: 1fr;
-  }
+  .two-col { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="brand-bar"></div>
+<!-- NAVIGATION -->
+<nav>
+  <a href="#about" id="tab-about">About</a>
+  <a href="#services" id="tab-services">Services</a>
+  <a href="#experience" id="tab-experience">Experience</a>
+  <a href="Anjali_DSylva_CV.pdf" target="_blank">Download CV</a>
+  <a href="#contact" id="tab-contact">Contact</a>
+</nav>
 
-<!-- LOGO SPACE AT THE TOP -->
+<!-- LOGO -->
 <div class="logo-top">
   <img src="logos/logo-primary.png" alt="Anjali D’Sylva Logo">
 </div>
@@ -174,81 +223,133 @@ footer {
   </p>
 </header>
 
-<section class="two-col">
+<!-- ABOUT -->
+<section id="about" class="two-col">
   <div>
-    <h2>Trusted operations for leaders</h2>
+    <h2>About me</h2>
     <p>
-    I partner with US and UK founders and executives to bring clarity, structure, 
-    and operational excellence to fast-moving businesses.  
+    I help founders and leadership teams build, run, and scale companies by setting up
+    the operational backbone from early-stage setup to executive and leadership operations.
     </p>
 
     <p>
-    From executive coordination to systems design, stakeholder alignment, and 
-    strategic execution — I help leaders focus on what truly matters.
+    I bring structure, clarity, and execution to fast-moving environments, combining hands-on
+    delivery with strategic operational leadership. Whether supporting at a task level or
+    operating as a Chief of Staff, my focus is building systems that allow leaders and
+    companies to scale with confidence.
     </p>
 
-    <a class="btn" href="mailto:anjalidsylva@gmail.com">Email me</a>
+    <a class="btn" href="mailto:aljdsylva@gmail.com">Email me</a>
   </div>
 
   <img src="headshot.jpg" alt="Anjali portrait">
 </section>
 
-<section>
-  <div class="card">
-    <h2>How I work</h2>
-    <ul>
-      <li>Executive calendar & decision support</li>
-      <li>Operations design and workflow architecture</li>
-      <li>Cross-team coordination and delivery</li>
-      <li>Board and stakeholder communications</li>
-      <li>Project oversight from strategy to execution</li>
-    </ul>
-  </div>
+<!-- SERVICES -->
+<section id="services">
+<h2>My services</h2>
+
+<div class="services-grid">
+
+<div class="service-card">
+<h3>1) Startup Ops</h3>
+<p>Company formation, banking, finance workflows, QuickBooks or Xero setup, contractor and HR operations, tools and SOPs, legal coordination, and centralised document governance.</p>
+<p><strong>Outcome:</strong> A clean, scalable operational engine from day one.</p>
+</div>
+
+<div class="service-card">
+<h3>2) Virtual Assistance</h3>
+<p>Calendar and inbox management, travel coordination, data entry, research, CRM updates, document formatting, and basic finance admin.</p>
+<p><strong>Outcome:</strong> Leaders regain time with consistent execution.</p>
+</div>
+
+<div class="service-card">
+<h3>3) Senior Executive Assistant</h3>
+<p>CEO calendar ownership, board coordination, stakeholder communications, meeting preparation, priority tracking, and confidential reporting.</p>
+<p><strong>Outcome:</strong> Leaders stay focused on strategy.</p>
+</div>
+
+<div class="service-card">
+<h3>4) Chief of Staff Support</h3>
+<p>Strategy translation into operations, OKR tracking, cross-team accountability, leadership cadence, executive reporting, and process optimisation.</p>
+<p><strong>Outcome:</strong> Clarity, alignment, and execution discipline.</p>
+</div>
+
+</div>
 </section>
 
-<!-- CLIENT LOGOS -->
-<section>
-  <h2>Clients & Collaborations</h2>
-  <div class="client-logos">
-    <img src="logos/client1.png" alt="Client logo">
-    <img src="logos/client2.png" alt="Client logo">
-    <img src="logos/client3.png" alt="Client logo">
-    <img src="logos/client4.png" alt="Client logo">
-  </div>
+<!-- EXPERIENCE -->
+<section id="experience">
+<h2>Clients I have worked with</h2>
+
+<div class="client-logos">
+<img src="logos/EsteeLauder.jpg" alt="Estee Lauder">
+<img src="logos/FreedmenTrust.png" alt="Freedmen Trust">
+<img src="logos/GF.png" alt="GF">
+<img src="logos/GPV.png" alt="GPV">
+<img src="logos/HayfordTrust.png" alt="Hayford Trust">
+<img src="logos/KKR.png" alt="KKR">
+<img src="logos/OptimalTech.png" alt="Optimal Tech">
+<img src="logos/TTH.png" alt="TTH">
+<img src="logos/UluPartners.png" alt="Ulu Partners">
+<img src="logos/WGU.jpg" alt="WGU">
+</div>
 </section>
 
 <!-- TESTIMONIAL -->
 <section>
-  <div class="testimonial">
-    <p>
-      “Anjali brought clarity, structure, and calm to our operations. Her ability to 
-      align teams and keep projects moving made a measurable difference to our business.”
-    </p>
-    <strong>— CEO, Climate Tech Company</strong>
-  </div>
+<div class="testimonial">
+<p>
+"Anjali brought calm, structure, and clarity to our operations. Her ability to align teams
+and keep projects moving made a real difference to our business."
+</p>
+<strong>CEO, Climate Tech Company</strong>
+</div>
 </section>
 
-<!-- CV SECTION -->
-<section>
-  <div class="card">
-    <h2>View my CV</h2>
-    <a class="btn" href="Anjali_DSylva_CV.pdf" target="_blank">
-      Download CV
-    </a>
-  </div>
+<!-- CONTACT -->
+<section id="contact">
+<h2>Contact</h2>
+<p>Reach me via email or LinkedIn below.</p>
+
+<div class="socials">
+<a href="mailto:aljdsylva@gmail.com">📧 Email</a>
+<a href="https://www.linkedin.com/in/anjalidsylva" target="_blank">🔗 LinkedIn</a>
+</div>
 </section>
 
-<!-- FOOTER WITH EMAIL + LINKEDIN -->
 <footer>
-  <div class="socials">
-    <a href="mailto:anjalidsylva@gmail.com">Email</a>
-    <a href="https://www.linkedin.com/in/anjalidsylva/" target="_blank">LinkedIn</a>
-  </div>
-  <p>© <script>document.write(new Date().getFullYear());</script> Anjali D’Sylva</p>
+<p>© <script>document.write(new Date().getFullYear());</script> Anjali D’Sylva</p>
 </footer>
 
-<!-- FLOATING CHAT BUTTON -->
-<a class="chat-btn" href="mailto:anjalidsylva@gmail.com">💬 Chat</a>
+<!-- WHATSAPP CHAT -->
+<a class="chat-btn" href="https://wa.me/919082231518" target="_blank">💬 Chat on WhatsApp</a>
+
+<!-- SCROLL UP -->
+<a class="scroll-up" href="#top">↑</a>
+
+<script>
+// Highlight nav tabs on scroll
+const sections = document.querySelectorAll("section");
+const tabs = {
+  about: document.getElementById("tab-about"),
+  services: document.getElementById("tab-services"),
+  experience: document.getElementById("tab-experience"),
+  contact: document.getElementById("tab-contact")
+};
+
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(sec => {
+    const top = window.scrollY;
+    const offset = sec.offsetTop - 120;
+    if (top >= offset) current = sec.id;
+  });
+
+  Object.values(tabs).forEach(tab => tab.classList.remove("active"));
+  if (tabs[current]) tabs[current].classList.add("active");
+});
+</script>
 
 </body>
 </html>
