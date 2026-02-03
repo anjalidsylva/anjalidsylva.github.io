@@ -12,50 +12,26 @@
 :root {
   --blue-main: #4A6FA5;
   --blue-glass: linear-gradient(135deg, rgba(74,111,165,0.95), rgba(74,111,165,0.65));
-  --bronze: #C9A66B;
+  --bronze: #C9A66B;          /* YOUR BRAND BRONZE */
   --charcoal: #1F2937;
   --light-bg: #F5F7FA;
 }
 
-/* GLOBAL TYPOGRAPHY */
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
   background: var(--light-bg);
   color: var(--charcoal);
   line-height: 1.75;
-  letter-spacing: 0.25px;
 }
 
-h1 {
-  font-size: 38px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-}
-
-h2 {
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: -0.2px;
-  margin-bottom: 18px;
-}
-
-h3 {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.1px;
-}
-
-p {
-  font-size: 17px;
-  color: #3b475b;
-}
-
-/* TOP BANNER */
+/* ================= TOP BANNER ================= */
 .top-banner {
   background: white;
   box-shadow: 0 6px 24px rgba(0,0,0,0.06);
-  padding: 16px 28px 20px;
+  padding: 18px 28px 22px;
 }
 
 .top-inner {
@@ -67,11 +43,26 @@ p {
   gap: 24px;
 }
 
+/* BIGGER LOGO (as requested) */
 .top-inner img {
-  height: 66px;
+  height: 80px;   /* increased from 66px */
 }
 
-/* NAVIGATION (UPPERCASE + ANIMATED UNDERLINE) */
+/* Subtitle reverted to bronze */
+.name-block h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.name-block p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--bronze);   /* REVERTED */
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+/* ============== NAV (UPPERCASE + UNDERLINE ANIMATION) ============== */
 nav a {
   margin-left: 18px;
   text-decoration: none;
@@ -84,7 +75,6 @@ nav a {
   padding-bottom: 4px;
 }
 
-/* animated underline */
 nav a::after {
   content: "";
   position: absolute;
@@ -104,7 +94,7 @@ nav a:hover {
   color: var(--blue-main);
 }
 
-/* TAGLINE (REWRITTEN) */
+/* ============== TAGLINE ============== */
 .tagline {
   text-align: center;
   padding: 28px 20px;
@@ -115,14 +105,65 @@ nav a:hover {
   font-size: 16px;
 }
 
-/* SECTIONS */
+/* ============== PAGE SECTIONS ============== */
 section {
   max-width: 1100px;
   margin: 90px auto;
   padding: 0 24px;
 }
 
-/* CONTACT BANNER */
+/* TWO COLUMN */
+.two-col {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+.two-col img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* ============== SERVICES GRID ============== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 26px;
+}
+
+.service-card {
+  background: white;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  border-top: 5px solid var(--blue-main);
+}
+
+/* ============== CLIENT LOGOS ============== */
+.client-logos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+  gap: 22px;
+  align-items: center;
+}
+
+.client-logos img {
+  max-height: 56px;
+  opacity: 0.85;
+}
+
+/* ============== TESTIMONIAL ============== */
+.testimonial {
+  background: white;
+  padding: 42px;
+  border-left: 6px solid var(--bronze);
+  border-radius: 18px;
+  box-shadow: 0 16px 36px rgba(0,0,0,0.08);
+}
+
+/* ============== CONTACT BANNER ============== */
 .contact-banner {
   background: linear-gradient(180deg, #1F2937, #17202A);
   padding: 70px 24px;
@@ -165,27 +206,6 @@ section {
   box-shadow: 0 24px 60px rgba(0,0,0,0.18);
 }
 
-.contact-form input,
-.contact-form textarea,
-.contact-form select {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid #d1d5db;
-  font-family: "Inter", sans-serif;
-  font-size: 14px;
-  transition: all .25s ease;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus,
-.contact-form select:focus {
-  outline: none;
-  border-color: var(--blue-main);
-  box-shadow: 0 0 0 3px rgba(74,111,165,0.15);
-  transform: translateY(-1px);
-}
-
 /* THANK YOU STATE */
 .thank-you {
   display: none;
@@ -208,7 +228,7 @@ section {
   font-weight: 700;
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 @media (max-width: 900px) {
   .contact-inner {
     grid-template-columns: 1fr;
@@ -223,13 +243,16 @@ section {
 
 <body>
 
+<!-- TOP -->
 <div class="top-banner">
   <div class="top-inner">
     <img src="logos/logo-primary.png" alt="Anjali D’Sylva Logo">
+
     <div class="name-block">
       <h1>Anjali D’Sylva</h1>
       <p>Services & Strategy</p>
     </div>
+
     <nav>
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -240,12 +263,102 @@ section {
   </div>
 </div>
 
-<!-- NEW TAGLINE -->
+<!-- TAGLINE -->
 <div class="tagline">
   Helping Founders, Leaders, Teams, and Businesses Build, Grow, and Run with Clarity, Structure, and Confidence.
 </div>
 
-<!-- CONTACT BANNER -->
+<!-- ABOUT -->
+<section id="about" class="two-col">
+  <div>
+    <h2>About</h2>
+    <p>I help founders and leadership teams build, run, and scale companies by setting up the operational backbone from early-stage setup to executive and leadership operations.</p>
+
+    <p>I bring structure and execution as a fractional team member in fast moving environments — combining hands-on delivery with strategic operational leadership.</p>
+  </div>
+  <img src="headshot.jpg" alt="Anjali portrait">
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<h2>Services</h2>
+
+<div class="services-grid">
+
+<div class="service-card">
+<h3>Startup Ops</h3>
+<ul>
+<li>Company formation & entity setup</li>
+<li>Banking, payments & finance workflows</li>
+<li>Accounting & invoicing systems</li>
+<li>Contractor & HR operations</li>
+<li>Tools, systems & SOP setup</li>
+<li>Legal & compliance coordination</li>
+</ul>
+</div>
+
+<div class="service-card">
+<h3>Virtual Assistance</h3>
+<ul>
+<li>Calendar & inbox management</li>
+<li>Travel & meetings coordination</li>
+<li>Research & reporting</li>
+<li>Document formatting</li>
+<li>CRM updates</li>
+</ul>
+</div>
+
+<div class="service-card">
+<h3>Senior Executive Assistant</h3>
+<ul>
+<li>CEO calendar ownership</li>
+<li>Board coordination</li>
+<li>Executive communications</li>
+<li>Meeting prep & follow-ups</li>
+</ul>
+</div>
+
+<div class="service-card">
+<h3>Chief of Staff Support</h3>
+<ul>
+<li>Strategy to operations</li>
+<li>OKR tracking</li>
+<li>Leadership cadence</li>
+<li>Process optimisation</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+<h2>Experience</h2>
+<div class="client-logos">
+<img src="logos/EsteeLauder.jpg">
+<img src="logos/FreedmenTrust.png">
+<img src="logos/GF.png">
+<img src="logos/GPV.png">
+<img src="logos/HayfordTrust.png">
+<img src="logos/KKR.png">
+<img src="logos/OptimalTech.png">
+<img src="logos/TTH.png">
+<img src="logos/UluPartners.png">
+<img src="logos/WGU.jpg">
+</div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section>
+<div class="testimonial">
+<p>
+“Anjali brought calm, structure and clarity to our operations. Her ability to align teams and keep execution moving made a real difference.”
+</p>
+<strong>CEO, Climate Tech Company</strong>
+</div>
+</section>
+
+<!-- CONTACT -->
 <div id="contact" class="contact-banner">
   <div class="contact-inner">
 
@@ -262,7 +375,7 @@ section {
       <label>What help are you looking for?</label>
       <textarea id="helpNeeded" required></textarea>
 
-      <label>Would you like to be sent a services rate card?</label>
+      <label>Would you like a services rate card?</label>
       <select id="rateCard">
         <option value="Yes">Yes</option>
         <option value="No">No</option>
