@@ -108,7 +108,7 @@ nav a.active {
     background 0.45s ease;
 }
 
-/* ============ MUTED BANNER WITH METALLIC SHIMMER (ENHANCED) ============ */
+/* ============ MUTED BANNER WITH METALLIC SHIMMER (ORIGINAL) ============ */
 .tagline {
   position: relative;
   overflow: hidden;
@@ -153,6 +153,12 @@ nav a.active {
   opacity: 0.6;
 }
 
+/* ===== NEW: DARKER BANNER OVERRIDE (KEEPS SHINE) ===== */
+.tagline {
+  background: linear-gradient(135deg, #5b7285, #6a8298);
+}
+
+/* animations unchanged */
 @keyframes shimmer {
   0% { transform: translateX(0); }
   100% { transform: translateX(120%); }
@@ -201,7 +207,7 @@ section {
   box-shadow: 0 18px 36px rgba(0,0,0,0.12);
 }
 
-/* ============ NEW: COMPANY LOGOS ============ */
+/* ============ COMPANY LOGOS ============ */
 #trusted-by {
   text-align: center;
 }
@@ -295,32 +301,7 @@ section {
   box-shadow: 0 20px 48px rgba(0,0,0,0.25);
 }
 
-.contact-form textarea,
-.contact-form select {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 18px;
-  border-radius: 12px;
-  border: 1px solid #ddd;
-  font-family: "Inter", sans-serif;
-  font-size: 14px;
-}
-
-/* SUBMIT BUTTON */
-.submit-btn {
-  display: block;
-  width: 100%;
-  padding: 14px;
-  border-radius: 12px;
-  border: none;
-  background: linear-gradient(135deg,#4A6FA5,#6f8fc4);
-  color: white;
-  font-weight: 700;
-  font-family: "DM Sans", sans-serif;
-  cursor: pointer;
-}
-
-/* CONFIRMATION MESSAGE (NEW) */
+/* CONFIRMATION MESSAGE */
 .confirmation {
   display: none;
   margin-top: 16px;
@@ -415,7 +396,7 @@ Helping Founders, Leaders, Teams, and Businesses to Build, Grow, and Run with Cl
   <img src="headshot.jpg" alt="Anjali portrait">
 </section>
 
-<!-- NEW SECTION ADDED -->
+<!-- WORKED WITH -->
 <section id="trusted-by">
   <h2>Worked With</h2>
 
@@ -512,7 +493,10 @@ Helping Founders, Leaders, Teams, and Businesses to Build, Grow, and Run with Cl
     </div>
 
     <form class="contact-form" id="contactForm" action="mailto:aljdsylva@gmail.com" method="post" enctype="text/plain">
+
+      <!-- SECURITY ADDITIONS (NON-DISRUPTIVE) -->
       <input type="hidden" name="csrf_token" value="static-secure-token-anjali">
+      <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
 
       <textarea name="about_you" rows="3" placeholder="Tell me about you"></textarea>
       <textarea name="help_needed" rows="3" placeholder="What help are you looking for?"></textarea>
@@ -593,21 +577,27 @@ document.querySelectorAll("section").forEach(sec => observer.observe(sec));
 const form = document.getElementById("contactForm");
 const msg = document.getElementById("confirmationMsg");
 
-form.addEventListener("submit", function() {
-  setTimeout(() => {
-    msg.style.display = "block";
-  }, 600);
-});
-
-/* SIMPLE FORM SAFETY CHECK */
 form.addEventListener("submit", function(e) {
+
+  // SECURITY CHECKS (ADDED — NON-DESTRUCTIVE)
+  const honeypot = document.querySelector("input[name='website']").value;
   const msg1 = document.querySelector("textarea[name='about_you']").value;
   const msg2 = document.querySelector("textarea[name='help_needed']").value;
+
+  if (honeypot) {
+    e.preventDefault();
+    return;
+  }
 
   if (!msg1 || !msg2) {
     e.preventDefault();
     alert("Please fill in both message fields before sending.");
+    return;
   }
+
+  setTimeout(() => {
+    msg.style.display = "block";
+  }, 600);
 });
 </script>
 
