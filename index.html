@@ -11,7 +11,7 @@
 <style>
 :root {
   --blue-main: #4A6FA5;
-  --blue-glass: linear-gradient(135deg, rgba(74,111,165,0.97), rgba(90,135,200,0.85));
+  --muted-blue-grey: #72849D;      /* NEW BRAND BANNER COLOUR */
   --bronze: #C9A66B;
   --charcoal: #1F2937;
   --light-bg: #F6F8FB;
@@ -29,19 +29,18 @@ body {
   letter-spacing: 0.2px;
 }
 
-/* ============ GLASS HEADER (NEW) ============ */
+/* ============ GLASS HEADER ============ */
 .top-banner {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(74,111,165,0.85); /* semi-transparent blue */
+  background: rgba(74,111,165,0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 6px 24px rgba(0,0,0,0.12);
   padding: 16px 28px;
 }
 
-/* layout inside header */
 .top-inner {
   max-width: 1200px;
   margin: auto;
@@ -56,7 +55,7 @@ body {
   height: 115px;
 }
 
-/* NAME + SUBTITLE NEXT TO LOGO */
+/* NAME + SUBTITLE */
 .name-block h1 {
   margin: 0;
   font-size: 28px;
@@ -71,7 +70,7 @@ body {
   text-transform: uppercase;
 }
 
-/* ======== NAV + SLIDING PILL HIGHLIGHT ======== */
+/* NAV + SLIDING PILL */
 .nav-wrapper {
   position: relative;
   display: inline-flex;
@@ -91,10 +90,6 @@ nav a {
   z-index: 2;
 }
 
-/* remove old underline */
-nav a::after { display: none; }
-
-/* active text colour */
 nav a.active {
   color: #f4e3b8;
 }
@@ -113,11 +108,11 @@ nav a.active {
     background 0.45s ease;
 }
 
-/* ============ PARALLAX BLUE BAND ============ */
+/* ============ UPDATED BANNER COLOUR (BRAND MUTED BLUE-GREY) ============ */
 .tagline {
   text-align: center;
   padding: 36px 20px;
-  background: var(--blue-glass);
+  background: linear-gradient(135deg, rgba(114,132,157,0.95), rgba(130,150,175,0.85));
   color: white;
   font-weight: 600;
   letter-spacing: 0.6px;
@@ -195,10 +190,12 @@ section {
   box-shadow: 0 10px 24px rgba(0,0,0,0.25);
 }
 
+/* UPDATED EMAIL BUTTON COLOUR (BRONZE) */
 .email-btn {
-  background: linear-gradient(135deg,#6f8fc4,#4A6FA5);
+  background: linear-gradient(135deg,#d6b16f,#C9A66B);
 }
 
+/* LinkedIn unchanged */
 .linkedin-btn {
   background: linear-gradient(135deg,#0077b5,#005983);
 }
@@ -289,7 +286,7 @@ section {
 Helping founders, leaders, teams, and businesses to build, grow, and run with clarity, structure, and confidence.
 </div>
 
-<!-- ABOUT -->
+<!-- ABOUT (YOUR NEW TEXT VERBATIM) -->
 <section id="about" class="two-col">
   <div>
     <h2>About</h2>
@@ -304,7 +301,7 @@ Helping founders, leaders, teams, and businesses to build, grow, and run with cl
   <img src="headshot.jpg" alt="Anjali portrait">
 </section>
 
-<!-- SERVICES -->
+<!-- SERVICES (UNCHANGED) -->
 <section id="services">
 <h2>Services</h2>
 
@@ -399,7 +396,6 @@ Helping founders, leaders, teams, and businesses to build, grow, and run with cl
 <a class="scroll-up" href="#">↑</a>
 
 <script>
-/* ====== SLIDING NAV HIGHLIGHT + SCROLL SPY ====== */
 const sections = document.querySelectorAll("section, #contact");
 const navLinks = document.querySelectorAll(".nav-link");
 const slider = document.getElementById("navSlider");
@@ -407,12 +403,10 @@ const slider = document.getElementById("navSlider");
 function moveSliderTo(link) {
   const rect = link.getBoundingClientRect();
   const navRect = link.parentElement.getBoundingClientRect();
-
   slider.style.width = rect.width + 20 + "px";
   slider.style.transform = `translateX(${rect.left - navRect.left - 10}px)`;
 }
 
-/* initialise slider */
 moveSliderTo(navLinks[0]);
 
 window.addEventListener("scroll", () => {
@@ -434,7 +428,6 @@ window.addEventListener("scroll", () => {
   });
 });
 
-/* move slider on hover too */
 navLinks.forEach(link => {
   link.addEventListener("mouseenter", () => moveSliderTo(link));
 });
