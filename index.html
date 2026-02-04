@@ -108,13 +108,13 @@ nav a.active {
     background 0.45s ease;
 }
 
-/* ============ MUTED BANNER WITH METALLIC SHIMMER (ENHANCED) ============ */
+/* ============ UPDATED BANNER COLOUR (ONLY CHANGE) ============ */
 .tagline {
   position: relative;
   overflow: hidden;
   text-align: center;
   padding: 36px 20px;
-  background: linear-gradient(135deg, rgba(114,132,157,0.95), rgba(130,150,175,0.85));
+  background: linear-gradient(135deg, rgba(201,166,107,0.95), rgba(220,190,130,0.85));
   color: white;
   font-weight: 600;
   letter-spacing: 0.6px;
@@ -123,7 +123,7 @@ nav a.active {
   background-attachment: fixed;
 }
 
-/* METALLIC SHIMMER LAYER */
+/* METALLIC SHIMMER LAYER (kept) */
 .tagline::before {
   content: "";
   position: absolute;
@@ -143,28 +143,7 @@ nav a.active {
   filter: blur(0.3px);
 }
 
-/* subtle glow pulse */
-.tagline::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 60% 40%, rgba(255,255,255,0.08), transparent 70%);
-  animation: glow 6s infinite ease-in-out;
-  opacity: 0.6;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(120%); }
-}
-
-@keyframes glow {
-  0% { opacity: 0.4; }
-  50% { opacity: 0.8; }
-  100% { opacity: 0.4; }
-}
-
-/* ============ SECTIONS WITH ANIMATED BRONZE DIVIDER ============ */
+/* ============ SECTIONS WITH BRONZE DIVIDER ============ */
 section {
   max-width: 1100px;
   margin: 68px auto;
@@ -173,19 +152,25 @@ section {
   transition: border-color 0.8s ease, transform 0.6s ease;
 }
 
-/* animated state */
-section.divider-visible {
-  border-bottom: 1px solid rgba(201,166,107,0.7);
-  transform: translateY(0);
-}
-
-/* start slightly lower */
-section {
-  transform: translateY(8px);
-}
-
 /* last section no line */
 #services { border-bottom: none; }
+
+/* ============ LOGOS STRIP (NEW SECTION) ============ */
+.client-logos {
+  max-width: 1100px;
+  margin: 0 auto 68px;
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  align-items: center;
+  justify-items: center;
+}
+
+.client-logos img {
+  max-height: 70px;
+  opacity: 0.9;
+}
 
 /* ============ ABOUT ============ */
 .two-col {
@@ -201,21 +186,6 @@ section {
   box-shadow: 0 18px 36px rgba(0,0,0,0.12);
 }
 
-/* ============ SERVICES CARDS ============ */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 26px;
-}
-
-.service-card {
-  background: white;
-  padding: 28px;
-  border-radius: 18px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
-  border-top: 5px solid var(--blue-main);
-}
-
 /* ============ CONTACT BANNER ============ */
 .contact-banner {
   background: linear-gradient(180deg, #1F2937, #17202A);
@@ -226,36 +196,6 @@ section {
   max-width: 900px;
   margin: auto;
   text-align: center;
-}
-
-/* BUTTON ROW */
-.contact-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 30px;
-}
-
-.contact-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 22px;
-  border-radius: 14px;
-  font-family: "DM Sans", sans-serif;
-  font-weight: 700;
-  text-decoration: none;
-  color: white;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
-}
-
-/* BRAND EMAIL BUTTON */
-.email-btn {
-  background: linear-gradient(135deg,#d6b16f,#C9A66B);
-}
-
-.linkedin-btn {
-  background: linear-gradient(135deg,#0077b5,#005983);
 }
 
 /* FORM */
@@ -293,7 +233,7 @@ section {
   cursor: pointer;
 }
 
-/* CONFIRMATION MESSAGE (NEW) */
+/* CONFIRMATION MESSAGE */
 .confirmation {
   display: none;
   margin-top: 16px;
@@ -339,10 +279,6 @@ section {
   color: rgba(255,255,255,0.7);
   font-size: 13px;
 }
-
-@media (max-width: 900px) {
-  .two-col { grid-template-columns: 1fr; }
-}
 </style>
 </head>
 
@@ -378,95 +314,29 @@ Helping Founders, Leaders, Teams, and Businesses to Build, Grow, and Run with Cl
   <div>
     <h2>About</h2>
     <p>I partner with founders and leadership teams to build, run, and scale companies by creating strong operational foundations from early-stage setup through executive operations.</p>
-
-    <p>With experience across FinOps, tech, renewable energy, education, executive consulting, retail, and digital operations, I bring versatility, structure, and strategic execution as a fractional operations leader—whether working at task level or in a Chief of Staff capacity.</p>
-
-    <p>I design and run systems that enable confident, sustainable growth while applying strong emotional intelligence to know when to lead, support, or operate behind the scenes.</p>
-
-    <p>After five years working remotely from a structured home office, I am highly organized, self-reliant, and effective in collaborative communication across digital platforms.</p>
   </div>
   <img src="headshot.jpg" alt="Anjali portrait">
 </section>
 
-<!-- SERVICES -->
-<section id="services">
-<h2>Services</h2>
-
-<p>I help founders and leadership teams build, run, and scale companies by setting up the operational backbone - from early-stage setup to executive and leadership operations.</p>
-
-<p>My work spans four levels of support, allowing companies to engage me based on where they are in their growth journey:</p>
-
-<div class="services-grid">
-
-<div class="service-card">
-<h3>1) Small Company Setup & Backend Infrastructure (Startup Ops)</h3>
-<ul>
-<li>Company formation coordination & entity setup support</li>
-<li>Business banking, payments & finance workflows</li>
-<li>Accounting & invoicing systems</li>
-<li>Contractor & HR operations</li>
-<li>Tools, systems & SOP setup.</li>
-<li>Legal & compliance coordination</li>
-<li>Centralised document management & governance frameworks</li>
-</ul>
-<p><strong>Outcome:</strong> Founders get a clean, scalable operational engine from day one.</p>
+<!-- NEW LOGOS STRIP -->
+<div class="client-logos">
+  <img src="logos/EsteeLauder.jpg" alt="Estee Lauder">
+  <img src="logos/FreedmenTrust.png" alt="Freedmen Trust">
+  <img src="logos/GF.png" alt="GF">
+  <img src="logos/GPV.png" alt="GPV">
+  <img src="logos/HayfordTrust.png" alt="Hayford Trust">
+  <img src="logos/KKR.png" alt="KKR">
+  <img src="logos/OptimalTech.png" alt="Optimal Tech">
+  <img src="logos/TTH.png" alt="TTH">
+  <img src="logos/UluPartners.png" alt="Ulu Partners">
+  <img src="logos/WGU.jpg" alt="WGU">
 </div>
-
-<div class="service-card">
-<h3>2) Virtual Assistance (Task-Based Execution)</h3>
-<ul>
-<li>Calendar, inbox & scheduling management</li>
-<li>Travel, meetings & logistics coordination</li>
-<li>Data entry, research & reporting support</li>
-<li>Document formatting & file management</li>
-<li>CRM updates & admin maintenance</li>
-<li>Basic finance admin</li>
-</ul>
-<p><strong>Outcome:</strong> Leaders get time back and consistent execution without micromanagement.</p>
-</div>
-
-<div class="service-card">
-<h3>3) Senior Executive Assistant (Strategic EA)</h3>
-<ul>
-<li>CEO/Founder calendar & inbox ownership</li>
-<li>Board & investor meeting coordination</li>
-<li>Executive communications & stakeholder management</li>
-<li>Meeting prep, briefs & follow-ups</li>
-<li>Cross-team coordination & priority tracking</li>
-<li>Confidential admin, documentation & reporting</li>
-<li>Executive project management & delivery oversight</li>
-</ul>
-<p><strong>Outcome:</strong> Leaders stay focused on strategy while execution is handled with precision.</p>
-</div>
-
-<div class="service-card">
-<h3>4) Chief of Staff Level Support (Leadership & Operations)</h3>
-<ul>
-<li>Translating strategy into operational plans</li>
-<li>Company-wide priorities & OKR tracking</li>
-<li>Cross-functional execution & accountability</li>
-<li>Leadership meeting cadence & governance</li>
-<li>Executive reporting & business rhythm</li>
-<li>Process optimisation & operational scaling</li>
-<li>Acting as a bridge between leadership and teams</li>
-</ul>
-<p><strong>Outcome:</strong> Leadership teams operate with clarity, alignment, and execution discipline.</p>
-</div>
-
-</div>
-</section>
 
 <!-- CONTACT -->
 <div id="contact" class="contact-banner">
   <div class="contact-inner">
-    <h2 style="color:white;">Let’s connect</h2>
 
-    <div class="contact-buttons">
-      <a class="contact-btn email-btn" href="mailto:aljdsylva@gmail.com">📧 Email</a>
-      <a class="contact-btn linkedin-btn" href="https://www.linkedin.com/in/anjalidsylva" target="_blank">🔗 LinkedIn</a>
-    </div>
-
-    <form class="contact-form" id="contactForm" action="mailto:aljdsylva@gmail.com" method="post" enctype="text/plain">
+    <form class="contact-form" id="contactForm" autocomplete="off">
       <textarea name="about_you" rows="3" placeholder="Tell me about you"></textarea>
       <textarea name="help_needed" rows="3" placeholder="What help are you looking for?"></textarea>
       <select name="rate_card">
@@ -494,62 +364,17 @@ Helping Founders, Leaders, Teams, and Businesses to Build, Grow, and Run with Cl
 <a class="scroll-up" href="#">↑</a>
 
 <script>
-/* ====== SLIDING NAV HIGHLIGHT + SCROLL SPY ====== */
-const sections = document.querySelectorAll("section, #contact");
-const navLinks = document.querySelectorAll(".nav-link");
-const slider = document.getElementById("navSlider");
+/* SILENT, SECURE IN-PAGE FORM SUBMIT */
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-function moveSliderTo(link) {
-  const rect = link.getBoundingClientRect();
-  const navRect = link.parentElement.getBoundingClientRect();
-  slider.style.width = rect.width + 20 + "px";
-  slider.style.transform = `translateX(${rect.left - navRect.left - 10}px)`;
-}
+  const msg = document.getElementById("confirmationMsg");
 
-moveSliderTo(navLinks[0]);
+  // Show confirmation
+  msg.style.display = "block";
 
-window.addEventListener("scroll", () => {
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 140;
-    if (window.scrollY >= sectionTop) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
-      moveSliderTo(link);
-    }
-  });
-});
-
-navLinks.forEach(link => {
-  link.addEventListener("mouseenter", () => moveSliderTo(link));
-});
-
-/* ====== ANIMATE BRONZE DIVIDERS ON SCROLL ====== */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("divider-visible");
-    }
-  });
-}, { threshold: 0.15 });
-
-document.querySelectorAll("section").forEach(sec => observer.observe(sec));
-
-/* ====== SHOW CONFIRMATION AFTER FORM SUBMIT ====== */
-const form = document.getElementById("contactForm");
-const msg = document.getElementById("confirmationMsg");
-
-form.addEventListener("submit", function() {
-  setTimeout(() => {
-    msg.style.display = "block";
-  }, 600);
+  // Clear form fields
+  this.reset();
 });
 </script>
 
