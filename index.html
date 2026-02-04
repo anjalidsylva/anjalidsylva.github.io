@@ -11,14 +11,13 @@
 <style>
 :root {
   --blue-main: #4A6FA5;
-  --blue-glass: linear-gradient(135deg, rgba(74,111,165,0.95), rgba(74,111,165,0.65));
-  --bronze: #C9A66B;          /* YOUR BRAND BRONZE */
+  --blue-soft: linear-gradient(135deg, #4A6FA5, #6B8BC6);
+  --bronze: #C9A66B;
   --charcoal: #1F2937;
   --light-bg: #F5F7FA;
 }
 
-* { box-sizing: border-box; }
-
+/* GLOBAL */
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
@@ -27,11 +26,14 @@ body {
   line-height: 1.75;
 }
 
-/* ================= TOP BANNER ================= */
+/* ========== STICKY TOP BANNER (FROZEN ON SCROLL) ========== */
 .top-banner {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   background: white;
   box-shadow: 0 6px 24px rgba(0,0,0,0.06);
-  padding: 18px 28px 22px;
+  padding: 18px 28px;
 }
 
 .top-inner {
@@ -43,12 +45,12 @@ body {
   gap: 24px;
 }
 
-/* BIGGER LOGO (as requested) */
+/* Bigger logo */
 .top-inner img {
-  height: 80px;   /* increased from 66px */
+  height: 80px;
 }
 
-/* Subtitle reverted to bronze */
+/* Name + subtitle */
 .name-block h1 {
   margin: 0;
   font-size: 28px;
@@ -57,12 +59,12 @@ body {
 .name-block p {
   margin: 4px 0 0;
   font-size: 14px;
-  color: var(--bronze);   /* REVERTED */
+  color: var(--bronze);
   letter-spacing: 0.6px;
   text-transform: uppercase;
 }
 
-/* ============== NAV (UPPERCASE + UNDERLINE ANIMATION) ============== */
+/* NAV */
 nav a {
   margin-left: 18px;
   text-decoration: none;
@@ -72,14 +74,14 @@ nav a {
   color: var(--charcoal);
   text-transform: uppercase;
   position: relative;
-  padding-bottom: 4px;
 }
 
+/* underline animation */
 nav a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -4px;
   width: 0%;
   height: 2px;
   background: var(--blue-main);
@@ -90,29 +92,26 @@ nav a:hover::after {
   width: 100%;
 }
 
-nav a:hover {
-  color: var(--blue-main);
-}
-
-/* ============== TAGLINE ============== */
+/* ========== POLISHED BLUE TAGLINE BAND ========== */
 .tagline {
   text-align: center;
-  padding: 28px 20px;
-  background: var(--blue-glass);
+  padding: 30px 20px;
+  background: var(--blue-soft);
   color: white;
   font-weight: 600;
   letter-spacing: 0.6px;
   font-size: 16px;
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.15);
 }
 
-/* ============== PAGE SECTIONS ============== */
+/* ========== PAGE SECTIONS ========== */
 section {
   max-width: 1100px;
   margin: 90px auto;
   padding: 0 24px;
 }
 
-/* TWO COLUMN */
+/* two-column layout */
 .two-col {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -126,7 +125,7 @@ section {
   box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
 
-/* ============== SERVICES GRID ============== */
+/* ========== SERVICES GRID ========== */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -141,7 +140,7 @@ section {
   border-top: 5px solid var(--blue-main);
 }
 
-/* ============== CLIENT LOGOS ============== */
+/* ========== CLIENT LOGOS ========== */
 .client-logos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
@@ -154,7 +153,7 @@ section {
   opacity: 0.85;
 }
 
-/* ============== TESTIMONIAL ============== */
+/* ========== TESTIMONIAL ========== */
 .testimonial {
   background: white;
   padding: 42px;
@@ -163,7 +162,7 @@ section {
   box-shadow: 0 16px 36px rgba(0,0,0,0.08);
 }
 
-/* ============== CONTACT BANNER ============== */
+/* ========== PROFESSIONAL BOTTOM CONTACT BANNER ========== */
 .contact-banner {
   background: linear-gradient(180deg, #1F2937, #17202A);
   padding: 70px 24px;
@@ -177,7 +176,7 @@ section {
   gap: 48px;
 }
 
-/* CONTACT BUTTONS */
+/* buttons */
 .contact-link {
   display: inline-flex;
   align-items: center;
@@ -198,7 +197,7 @@ section {
   background: linear-gradient(135deg,#0077b5,#005983);
 }
 
-/* FORM */
+/* form */
 .contact-form {
   background: white;
   padding: 34px;
@@ -206,16 +205,7 @@ section {
   box-shadow: 0 24px 60px rgba(0,0,0,0.18);
 }
 
-/* THANK YOU STATE */
-.thank-you {
-  display: none;
-  background: white;
-  padding: 40px;
-  border-radius: 20px;
-  text-align: center;
-}
-
-/* FLOATING CHAT */
+/* ========== FLOATING BUTTONS ========== */
 .chat-float {
   position: fixed;
   bottom: 26px;
@@ -226,9 +216,22 @@ section {
   border-radius: 30px;
   text-decoration: none;
   font-weight: 700;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.3);
 }
 
-/* MOBILE */
+.scroll-up {
+  position: fixed;
+  bottom: 26px;
+  left: 26px;
+  background: var(--charcoal);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* mobile */
 @media (max-width: 900px) {
   .contact-inner {
     grid-template-columns: 1fr;
@@ -247,12 +250,10 @@ section {
 <div class="top-banner">
   <div class="top-inner">
     <img src="logos/logo-primary.png" alt="Anjali D’Sylva Logo">
-
     <div class="name-block">
       <h1>Anjali D’Sylva</h1>
       <p>Services & Strategy</p>
     </div>
-
     <nav>
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -263,69 +264,93 @@ section {
   </div>
 </div>
 
-<!-- TAGLINE -->
+<!-- SMART BLUE BAND -->
 <div class="tagline">
   Helping Founders, Leaders, Teams, and Businesses Build, Grow, and Run with Clarity, Structure, and Confidence.
 </div>
 
-<!-- ABOUT -->
+<!-- ABOUT (YOUR TEXT VERBATIM) -->
 <section id="about" class="two-col">
   <div>
     <h2>About</h2>
+
     <p>I help founders and leadership teams build, run, and scale companies by setting up the operational backbone from early-stage setup to executive and leadership operations.</p>
 
-    <p>I bring structure and execution as a fractional team member in fast moving environments — combining hands-on delivery with strategic operational leadership.</p>
+    <p>In my career so far, I’ve had the opportunity to support founders and leaders across a range of industries – particularly in Fin ops, Tech, renewable energy, education, executive consulting and coaching, retail, media and digital operations – which has given me a strong foundation for a role where versatility and strategy are key.</p>
+
+    <p>I bring structure and execution as a fractional team member in fast moving and tenured environments – combining hands on delivery with strategic operational leadership. Whether supporting at a task level or operating as a Chief of Staff, my focus is building and running systems that allow leaders and companies to scale with confidence.</p>
+
+    <p>Working closely with founders has also developed my emotional intelligence and adaptability, understanding when to step in, when to push forward, and when to quietly handle things in the background.</p>
+
+    <p>Working remotely over the last 5 years in a seasoned home office has made me highly structured and self reliant. I keep constant communication through email, Slack, Teams and messenger apps.</p>
   </div>
+
   <img src="headshot.jpg" alt="Anjali portrait">
 </section>
 
-<!-- SERVICES -->
+<!-- SERVICES (YOUR TEXT VERBATIM) -->
 <section id="services">
 <h2>Services</h2>
+
+<p>I help founders and leadership teams build, run, and scale companies by setting up the operational backbone – from early-stage setup to executive and leadership operations.</p>
+
+<p>My work spans four levels of support, allowing companies to engage me based on where they are in their growth journey:</p>
 
 <div class="services-grid">
 
 <div class="service-card">
-<h3>Startup Ops</h3>
+<h3>1) Small Company Setup & Backend Infrastructure (Startup Ops)</h3>
 <ul>
-<li>Company formation & entity setup</li>
-<li>Banking, payments & finance workflows</li>
+<li>Company formation coordination & entity setup support</li>
+<li>Business banking, payments & finance workflows</li>
 <li>Accounting & invoicing systems</li>
 <li>Contractor & HR operations</li>
 <li>Tools, systems & SOP setup</li>
 <li>Legal & compliance coordination</li>
+<li>Centralised document management & governance frameworks</li>
 </ul>
+<p><strong>Outcome:</strong> Founders get a clean, scalable operational engine from day one.</p>
 </div>
 
 <div class="service-card">
-<h3>Virtual Assistance</h3>
+<h3>2) Virtual Assistance (Task-Based Execution)</h3>
 <ul>
-<li>Calendar & inbox management</li>
-<li>Travel & meetings coordination</li>
-<li>Research & reporting</li>
-<li>Document formatting</li>
-<li>CRM updates</li>
+<li>Calendar, inbox & scheduling management</li>
+<li>Travel, meetings & logistics coordination</li>
+<li>Data entry, research & reporting support</li>
+<li>Document formatting & file management</li>
+<li>CRM updates & admin maintenance</li>
+<li>Basic finance admin</li>
 </ul>
+<p><strong>Outcome:</strong> Leaders get time back and consistent execution without micromanagement.</p>
 </div>
 
 <div class="service-card">
-<h3>Senior Executive Assistant</h3>
+<h3>3) Senior Executive Assistant (Strategic EA)</h3>
 <ul>
-<li>CEO calendar ownership</li>
-<li>Board coordination</li>
-<li>Executive communications</li>
-<li>Meeting prep & follow-ups</li>
+<li>CEO/Founder calendar & inbox ownership</li>
+<li>Board & investor meeting coordination</li>
+<li>Executive communications & stakeholder management</li>
+<li>Meeting prep, briefs & follow-ups</li>
+<li>Cross-team coordination & priority tracking</li>
+<li>Confidential admin, documentation & reporting</li>
+<li>Executive project management & delivery oversight</li>
 </ul>
+<p><strong>Outcome:</strong> Leaders stay focused on strategy while execution is handled with precision.</p>
 </div>
 
 <div class="service-card">
-<h3>Chief of Staff Support</h3>
+<h3>4) Chief of Staff–Level Support (Leadership & Operations)</h3>
 <ul>
-<li>Strategy to operations</li>
-<li>OKR tracking</li>
-<li>Leadership cadence</li>
-<li>Process optimisation</li>
+<li>Translating strategy into operational plans</li>
+<li>Company-wide priorities & OKR tracking</li>
+<li>Cross-functional execution & accountability</li>
+<li>Leadership meeting cadence & governance</li>
+<li>Executive reporting & business rhythm</li>
+<li>Process optimisation & operational scaling</li>
+<li>Acting as a bridge between leadership and teams</li>
 </ul>
+<p><strong>Outcome:</strong> Leadership teams operate with clarity, alignment, and execution discipline.</p>
 </div>
 
 </div>
@@ -368,58 +393,28 @@ section {
       <a class="contact-link linkedin-btn" href="https://www.linkedin.com/in/anjalidsylva" target="_blank">🔗 LinkedIn</a>
     </div>
 
-    <form id="leadForm" class="contact-form">
+    <form class="contact-form">
       <label>Tell me about you</label>
-      <textarea id="aboutYou" required></textarea>
+      <textarea></textarea>
 
       <label>What help are you looking for?</label>
-      <textarea id="helpNeeded" required></textarea>
+      <textarea></textarea>
 
       <label>Would you like a services rate card?</label>
-      <select id="rateCard">
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-        <option value="Maybe">Maybe later</option>
+      <select>
+        <option>Yes</option>
+        <option>No</option>
+        <option>Maybe later</option>
       </select>
 
       <button type="submit">Send message</button>
     </form>
 
-    <div id="thankYou" class="thank-you">
-      <h3>Thank you for reaching out</h3>
-      <p>I’ll be in touch shortly.</p>
-    </div>
-
   </div>
 </div>
 
 <a class="chat-float" href="https://wa.me/919082231518" target="_blank">Let’s talk</a>
-
-<script>
-document.getElementById("leadForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const about = document.getElementById("aboutYou").value;
-  const help = document.getElementById("helpNeeded").value;
-  const rate = document.getElementById("rateCard").value;
-
-  const subject = encodeURIComponent("New inquiry from your website");
-  const body = encodeURIComponent(
-    "About you:\n" + about + "\n\n" +
-    "Help needed:\n" + help + "\n\n" +
-    "Rate card requested:\n" + rate
-  );
-
-  const mailtoLink = "mailto:aljdsylva@gmail.com?subject=" + subject + "&body=" + body;
-
-  document.getElementById("leadForm").style.display = "none";
-  document.getElementById("thankYou").style.display = "block";
-
-  setTimeout(() => {
-    window.location.href = mailtoLink;
-  }, 500);
-});
-</script>
+<a class="scroll-up" href="#">↑</a>
 
 </body>
 </html>
