@@ -11,29 +11,34 @@
 <style>
 :root {
   --blue-main: #4A6FA5;
-  --blue-soft: linear-gradient(135deg, #4A6FA5, #6B8BC6);
+  --blue-glass: linear-gradient(135deg, rgba(74,111,165,0.97), rgba(90,135,200,0.85));
   --bronze: #C9A66B;
   --charcoal: #1F2937;
-  --light-bg: #F5F7FA;
+  --light-bg: #F6F8FB;
 }
 
-/* GLOBAL */
+/* GLOBAL + SMOOTH SCROLL */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
   background: var(--light-bg);
   color: var(--charcoal);
   line-height: 1.75;
+  letter-spacing: 0.2px;
 }
 
-/* ========== STICKY TOP BANNER (FROZEN ON SCROLL) ========== */
+/* ===== STICKY TOP BANNER ===== */
 .top-banner {
   position: sticky;
   top: 0;
   z-index: 1000;
   background: white;
   box-shadow: 0 6px 24px rgba(0,0,0,0.06);
-  padding: 18px 28px;
+  padding: 14px 28px;
 }
 
 .top-inner {
@@ -42,26 +47,11 @@ body {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
 }
 
-/* Bigger logo */
 .top-inner img {
-  height: 80px;
-}
-
-/* Name + subtitle */
-.name-block h1 {
-  margin: 0;
-  font-size: 28px;
-}
-
-.name-block p {
-  margin: 4px 0 0;
-  font-size: 14px;
-  color: var(--bronze);
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
+  height: 84px;
 }
 
 /* NAV */
@@ -70,7 +60,7 @@ nav a {
   text-decoration: none;
   font-family: "DM Sans", sans-serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
   color: var(--charcoal);
   text-transform: uppercase;
   position: relative;
@@ -92,40 +82,68 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* ========== POLISHED BLUE TAGLINE BAND ========== */
+/* ===== PARALLAX BLUE BAND ===== */
 .tagline {
   text-align: center;
-  padding: 30px 20px;
-  background: var(--blue-soft);
+  padding: 36px 20px;
+  background: var(--blue-glass);
   color: white;
   font-weight: 600;
   letter-spacing: 0.6px;
   font-size: 16px;
-  box-shadow: inset 0 0 20px rgba(255,255,255,0.15);
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.2);
+  background-attachment: fixed;
 }
 
-/* ========== PAGE SECTIONS ========== */
+/* ===== FADE-IN ON SCROLL ===== */
+.fade {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: all 0.6s ease;
+}
+
+.fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== ABOUT ===== */
 section {
   max-width: 1100px;
-  margin: 90px auto;
+  margin: 68px auto;
   padding: 0 24px;
 }
 
-/* two-column layout */
 .two-col {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 50px;
+  gap: 48px;
   align-items: start;
 }
 
 .two-col img {
   width: 100%;
   border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.12);
 }
 
-/* ========== SERVICES GRID ========== */
+/* ===== LOGOS UNDER ABOUT (BIGGER) ===== */
+.client-logos-big {
+  max-width: 1100px;
+  margin: 30px auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+  align-items: center;
+  justify-items: center;
+}
+
+.client-logos-big img {
+  max-height: 80px;
+  opacity: 0.9;
+}
+
+/* ===== SERVICES ===== */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -138,55 +156,44 @@ section {
   border-radius: 18px;
   box-shadow: 0 18px 40px rgba(0,0,0,0.08);
   border-top: 5px solid var(--blue-main);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ========== CLIENT LOGOS ========== */
-.client-logos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
-  gap: 22px;
-  align-items: center;
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 46px rgba(0,0,0,0.12);
 }
 
-.client-logos img {
-  max-height: 56px;
-  opacity: 0.85;
-}
-
-/* ========== TESTIMONIAL ========== */
-.testimonial {
-  background: white;
-  padding: 42px;
-  border-left: 6px solid var(--bronze);
-  border-radius: 18px;
-  box-shadow: 0 16px 36px rgba(0,0,0,0.08);
-}
-
-/* ========== PROFESSIONAL BOTTOM CONTACT BANNER ========== */
+/* ===== CONTACT BANNER (PRO REFINED) ===== */
 .contact-banner {
   background: linear-gradient(180deg, #1F2937, #17202A);
   padding: 70px 24px;
 }
 
 .contact-inner {
-  max-width: 1000px;
+  max-width: 900px;
   margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 48px;
+  text-align: center;
 }
 
-/* buttons */
-.contact-link {
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.contact-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   padding: 14px 22px;
   border-radius: 14px;
   font-family: "DM Sans", sans-serif;
   font-weight: 700;
   text-decoration: none;
   color: white;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
 }
 
 .email-btn {
@@ -197,15 +204,11 @@ section {
   background: linear-gradient(135deg,#0077b5,#005983);
 }
 
-/* form */
-.contact-form {
-  background: white;
-  padding: 34px;
-  border-radius: 20px;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+.chat-btn {
+  background: linear-gradient(135deg,#2fd66f,#1da851);
 }
 
-/* ========== FLOATING BUTTONS ========== */
+/* ===== WHATSAPP-STYLE CHAT WINDOW ===== */
 .chat-float {
   position: fixed;
   bottom: 26px;
@@ -216,9 +219,56 @@ section {
   border-radius: 30px;
   text-decoration: none;
   font-weight: 700;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
 }
 
+.chat-window {
+  position: fixed;
+  bottom: 80px;
+  right: 26px;
+  width: 320px;
+  background: #e5ddd5;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+  display: none;
+}
+
+.chat-header {
+  background: #075E54;
+  color: white;
+  padding: 12px;
+  border-radius: 18px 18px 0 0;
+  font-weight: 700;
+}
+
+.chat-body {
+  padding: 14px;
+}
+
+.chat-body textarea {
+  width: 100%;
+  height: 80px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-family: "Inter", sans-serif;
+}
+
+.chat-body input[type=file] {
+  margin-top: 8px;
+}
+
+.chat-body button {
+  margin-top: 10px;
+  padding: 10px 16px;
+  background: #25D366;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* ===== SCROLL TO TOP ===== */
 .scroll-up {
   position: fixed;
   bottom: 26px;
@@ -231,15 +281,9 @@ section {
   font-weight: 700;
 }
 
-/* mobile */
+/* MOBILE */
 @media (max-width: 900px) {
-  .contact-inner {
-    grid-template-columns: 1fr;
-  }
-  .top-inner {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
+  .two-col { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -250,10 +294,6 @@ section {
 <div class="top-banner">
   <div class="top-inner">
     <img src="logos/logo-primary.png" alt="Anjali D’Sylva Logo">
-    <div class="name-block">
-      <h1>Anjali D’Sylva</h1>
-      <p>Services & Strategy</p>
-    </div>
     <nav>
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -264,35 +304,45 @@ section {
   </div>
 </div>
 
-<!-- SMART BLUE BAND -->
+<!-- BLUE PARALLAX BAND -->
 <div class="tagline">
-  Helping Founders, Leaders, Teams, and Businesses Build, Grow, and Run with Clarity, Structure, and Confidence.
+Helping Founders, Leaders, Teams, and Businesses Build, Grow, and Run with Clarity, Structure, and Confidence.
 </div>
 
-<!-- ABOUT (YOUR TEXT VERBATIM) -->
-<section id="about" class="two-col">
+<!-- ABOUT (YOUR TEXT) -->
+<section id="about" class="two-col fade">
   <div>
     <h2>About</h2>
+    <p>I partner with founders and leadership teams to build, run, and scale companies by creating strong operational foundations from early-stage setup through executive operations.</p>
 
-    <p>I help founders and leadership teams build, run, and scale companies by setting up the operational backbone from early-stage setup to executive and leadership operations.</p>
+    <p>With experience across FinOps, tech, renewable energy, education, executive consulting, retail, and digital operations, I bring versatility, structure, and strategic execution as a fractional operations leader—whether working at task level or in a Chief of Staff capacity.</p>
 
-    <p>In my career so far, I’ve had the opportunity to support founders and leaders across a range of industries – particularly in Fin ops, Tech, renewable energy, education, executive consulting and coaching, retail, media and digital operations – which has given me a strong foundation for a role where versatility and strategy are key.</p>
+    <p>I design and run systems that enable confident, sustainable growth while applying strong emotional intelligence to know when to lead, support, or operate behind the scenes.</p>
 
-    <p>I bring structure and execution as a fractional team member in fast moving and tenured environments – combining hands on delivery with strategic operational leadership. Whether supporting at a task level or operating as a Chief of Staff, my focus is building and running systems that allow leaders and companies to scale with confidence.</p>
-
-    <p>Working closely with founders has also developed my emotional intelligence and adaptability, understanding when to step in, when to push forward, and when to quietly handle things in the background.</p>
-
-    <p>Working remotely over the last 5 years in a seasoned home office has made me highly structured and self reliant. I keep constant communication through email, Slack, Teams and messenger apps.</p>
+    <p>After five years working remotely from a structured home office, I am highly organized, self-reliant, and effective in collaborative communication across digital platforms.</p>
   </div>
-
   <img src="headshot.jpg" alt="Anjali portrait">
 </section>
 
-<!-- SERVICES (YOUR TEXT VERBATIM) -->
-<section id="services">
+<!-- LOGOS UNDER ABOUT -->
+<div class="client-logos-big fade">
+<img src="logos/EsteeLauder.jpg">
+<img src="logos/FreedmenTrust.png">
+<img src="logos/GF.png">
+<img src="logos/GPV.png">
+<img src="logos/HayfordTrust.png">
+<img src="logos/KKR.png">
+<img src="logos/OptimalTech.png">
+<img src="logos/TTH.png">
+<img src="logos/UluPartners.png">
+<img src="logos/WGU.jpg">
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="fade">
 <h2>Services</h2>
 
-<p>I help founders and leadership teams build, run, and scale companies by setting up the operational backbone – from early-stage setup to executive and leadership operations.</p>
+<p>I help founders and leadership teams build, run, and scale companies by setting up the operational backbone - from early-stage setup to executive and leadership operations.</p>
 
 <p>My work spans four levels of support, allowing companies to engage me based on where they are in their growth journey:</p>
 
@@ -305,7 +355,7 @@ section {
 <li>Business banking, payments & finance workflows</li>
 <li>Accounting & invoicing systems</li>
 <li>Contractor & HR operations</li>
-<li>Tools, systems & SOP setup</li>
+<li>Tools, systems & SOP setup.</li>
 <li>Legal & compliance coordination</li>
 <li>Centralised document management & governance frameworks</li>
 </ul>
@@ -340,7 +390,7 @@ section {
 </div>
 
 <div class="service-card">
-<h3>4) Chief of Staff–Level Support (Leadership & Operations)</h3>
+<h3>4) Chief of Staff Level Support (Leadership & Operations)</h3>
 <ul>
 <li>Translating strategy into operational plans</li>
 <li>Company-wide priorities & OKR tracking</li>
@@ -356,65 +406,72 @@ section {
 </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-<h2>Experience</h2>
-<div class="client-logos">
-<img src="logos/EsteeLauder.jpg">
-<img src="logos/FreedmenTrust.png">
-<img src="logos/GF.png">
-<img src="logos/GPV.png">
-<img src="logos/HayfordTrust.png">
-<img src="logos/KKR.png">
-<img src="logos/OptimalTech.png">
-<img src="logos/TTH.png">
-<img src="logos/UluPartners.png">
-<img src="logos/WGU.jpg">
-</div>
-</section>
-
-<!-- TESTIMONIAL -->
-<section>
-<div class="testimonial">
-<p>
-“Anjali brought calm, structure and clarity to our operations. Her ability to align teams and keep execution moving made a real difference.”
-</p>
-<strong>CEO, Climate Tech Company</strong>
-</div>
-</section>
-
 <!-- CONTACT -->
 <div id="contact" class="contact-banner">
   <div class="contact-inner">
+    <h2 style="color:white;">Let’s connect</h2>
 
-    <div>
-      <h2 style="color:white;">Let’s connect</h2>
-      <a class="contact-link email-btn" href="mailto:aljdsylva@gmail.com">📧 Email</a>
-      <a class="contact-link linkedin-btn" href="https://www.linkedin.com/in/anjalidsylva" target="_blank">🔗 LinkedIn</a>
+    <div class="contact-buttons">
+      <a class="contact-btn email-btn" href="mailto:aljdsylva@gmail.com">📧 Email</a>
+      <a class="contact-btn linkedin-btn" href="https://www.linkedin.com/in/anjalidsylva" target="_blank">🔗 LinkedIn</a>
+      <a class="contact-btn chat-btn" onclick="toggleChat()">💬 chat</a>
     </div>
-
-    <form class="contact-form">
-      <label>Tell me about you</label>
-      <textarea></textarea>
-
-      <label>What help are you looking for?</label>
-      <textarea></textarea>
-
-      <label>Would you like a services rate card?</label>
-      <select>
-        <option>Yes</option>
-        <option>No</option>
-        <option>Maybe later</option>
-      </select>
-
-      <button type="submit">Send message</button>
-    </form>
-
   </div>
 </div>
 
-<a class="chat-float" href="https://wa.me/919082231518" target="_blank">Let’s talk</a>
+<!-- WHATSAPP-STYLE CHAT -->
+<div class="chat-window" id="chatBox">
+  <div class="chat-header">Chat with Anjali</div>
+  <div class="chat-body">
+    <textarea id="chatText"></textarea>
+    <input type="file">
+    <button onclick="sendWhatsApp()">Send via WhatsApp</button>
+  </div>
+</div>
+
+<a class="chat-float" onclick="toggleChat()">chat</a>
 <a class="scroll-up" href="#">↑</a>
+
+<script>
+/* Fade-in on scroll */
+const faders = document.querySelectorAll(".fade");
+const appearOptions = { threshold: 0.2 };
+
+const appearOnScroll = new IntersectionObserver(function(entries, observer){
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add("visible");
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+
+faders.forEach(fader => appearOnScroll.observe(fader));
+
+/* Chat toggle */
+function toggleChat() {
+  const box = document.getElementById("chatBox");
+
+  if (box.style.display === "block") {
+    box.style.display = "none";
+  } else {
+    box.style.display = "block";
+
+    // AUTOMATIC PREFILL MESSAGE
+    const prefill = 
+"Hi Anjali, I’m reaching out from your website.\n\n" +
+"I’d love to discuss how you might support my business.";
+
+    document.getElementById("chatText").value = prefill;
+  }
+}
+
+/* Send message to WhatsApp */
+function sendWhatsApp() {
+  const text = document.getElementById("chatText").value;
+  const url = "https://wa.me/919082231518?text=" + encodeURIComponent(text);
+  window.open(url, "_blank");
+}
+</script>
 
 </body>
 </html>
