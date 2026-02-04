@@ -201,6 +201,33 @@ section {
   box-shadow: 0 18px 36px rgba(0,0,0,0.12);
 }
 
+/* ============ NEW: COMPANY LOGOS ============ */
+#trusted-by {
+  text-align: center;
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 28px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.logo-grid img {
+  max-width: 140px;
+  margin: auto;
+  filter: grayscale(40%);
+  opacity: 0.85;
+  transition: all 0.3s ease;
+}
+
+.logo-grid img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
 /* ============ SERVICES CARDS ============ */
 .services-grid {
   display: grid;
@@ -388,6 +415,24 @@ Helping Founders, Leaders, Teams, and Businesses to Build, Grow, and Run with Cl
   <img src="headshot.jpg" alt="Anjali portrait">
 </section>
 
+<!-- NEW SECTION ADDED -->
+<section id="trusted-by">
+  <h2>Worked With</h2>
+
+  <div class="logo-grid">
+    <img src="logos/EsteeLauder.jpg" alt="Estée Lauder">
+    <img src="logos/FreedmenTrust.png" alt="Freedmen Trust">
+    <img src="logos/GF.png" alt="GF">
+    <img src="logos/GPV.png" alt="GPV">
+    <img src="logos/HayfordTrust.png" alt="Hayford Trust">
+    <img src="logos/KKR.png" alt="KKR">
+    <img src="logos/OptimalTech.png" alt="Optimal Tech">
+    <img src="logos/TTH.png" alt="TTH">
+    <img src="logos/UluPartners.png" alt="Ulu Partners">
+    <img src="logos/WGU.jpg" alt="WGU">
+  </div>
+</section>
+
 <!-- SERVICES -->
 <section id="services">
 <h2>Services</h2>
@@ -467,6 +512,8 @@ Helping Founders, Leaders, Teams, and Businesses to Build, Grow, and Run with Cl
     </div>
 
     <form class="contact-form" id="contactForm" action="mailto:aljdsylva@gmail.com" method="post" enctype="text/plain">
+      <input type="hidden" name="csrf_token" value="static-secure-token-anjali">
+
       <textarea name="about_you" rows="3" placeholder="Tell me about you"></textarea>
       <textarea name="help_needed" rows="3" placeholder="What help are you looking for?"></textarea>
       <select name="rate_card">
@@ -550,6 +597,17 @@ form.addEventListener("submit", function() {
   setTimeout(() => {
     msg.style.display = "block";
   }, 600);
+});
+
+/* SIMPLE FORM SAFETY CHECK */
+form.addEventListener("submit", function(e) {
+  const msg1 = document.querySelector("textarea[name='about_you']").value;
+  const msg2 = document.querySelector("textarea[name='help_needed']").value;
+
+  if (!msg1 || !msg2) {
+    e.preventDefault();
+    alert("Please fill in both message fields before sending.");
+  }
 });
 </script>
 
