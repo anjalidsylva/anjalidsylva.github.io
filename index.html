@@ -11,14 +11,13 @@
 <style>
 :root {
   --blue-main: #4A6FA5;
-  --blue-glass: linear-gradient(135deg, rgba(74,111,165,0.97), rgba(90,135,200,0.85));
-  --bronze: #C9A66B;
+  --blue-glass: linear-gradient(135deg, rgba(74,111,165,0.95), rgba(74,111,165,0.65));
+  --bronze: #C9A66B;          /* YOUR BRAND BRONZE */
   --charcoal: #1F2937;
-  --light-bg: #F6F8FB;
+  --light-bg: #F5F7FA;
 }
 
-/* SMOOTH SCROLL */
-html { scroll-behavior: smooth; }
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -26,17 +25,13 @@ body {
   background: var(--light-bg);
   color: var(--charcoal);
   line-height: 1.75;
-  letter-spacing: 0.2px;
 }
 
-/* ============ TOP BANNER ============ */
+/* ================= TOP BANNER ================= */
 .top-banner {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
   background: white;
   box-shadow: 0 6px 24px rgba(0,0,0,0.06);
-  padding: 14px 28px;
+  padding: 18px 28px 22px;
 }
 
 .top-inner {
@@ -45,127 +40,93 @@ body {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
 }
 
-/* BIGGER LOGO */
+/* BIGGER LOGO (as requested) */
 .top-inner img {
-  height: 96px;
+  height: 80px;   /* increased from 66px */
 }
 
-/* NAME + SUBTITLE NEXT TO LOGO */
+/* Subtitle reverted to bronze */
 .name-block h1 {
   margin: 0;
-  font-size: 26px;
+  font-size: 28px;
 }
 
 .name-block p {
   margin: 4px 0 0;
-  font-size: 13px;
-  color: var(--bronze);
+  font-size: 14px;
+  color: var(--bronze);   /* REVERTED */
   letter-spacing: 0.6px;
   text-transform: uppercase;
 }
 
-/* ======== NAV + PILL SLIDER (NEW) ======== */
-.nav-wrapper {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 18px;
-}
-
-/* Nav links */
+/* ============== NAV (UPPERCASE + UNDERLINE ANIMATION) ============== */
 nav a {
+  margin-left: 18px;
   text-decoration: none;
   font-family: "DM Sans", sans-serif;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--charcoal);
   text-transform: uppercase;
-  padding: 8px 0;
   position: relative;
-  z-index: 2;
+  padding-bottom: 4px;
 }
 
-/* Remove thin underline — pill replaces it */
-nav a::after { display: none; }
-
-/* ACTIVE STATE */
-nav a.active {
-  color: white;
-}
-
-/* THICK PILL SLIDER */
-.nav-slider {
+nav a::after {
+  content: "";
   position: absolute;
-  bottom: 4px;
-  height: 8px;
-  border-radius: 20px;
-  background: linear-gradient(90deg, #3b5fa0, #4A6FA5, #6f8fc4);
-  box-shadow: 0 6px 14px rgba(74,111,165,0.25);
-  transition:
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.45s ease;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--blue-main);
+  transition: width 0.3s ease;
 }
 
-/* ============ PARALLAX BLUE BAND ============ */
+nav a:hover::after {
+  width: 100%;
+}
+
+nav a:hover {
+  color: var(--blue-main);
+}
+
+/* ============== TAGLINE ============== */
 .tagline {
   text-align: center;
-  padding: 36px 20px;
+  padding: 28px 20px;
   background: var(--blue-glass);
   color: white;
   font-weight: 600;
   letter-spacing: 0.6px;
   font-size: 16px;
-  box-shadow: inset 0 0 20px rgba(255,255,255,0.2);
-  background-attachment: fixed;
 }
 
-/* ============ FADE-IN ============ */
-.fade {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: all 0.6s ease;
-}
-
-.fade.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ============ SECTIONS ============ */
+/* ============== PAGE SECTIONS ============== */
 section {
   max-width: 1100px;
-  margin: 68px auto;
+  margin: 90px auto;
   padding: 0 24px;
 }
 
+/* TWO COLUMN */
 .two-col {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 48px;
+  gap: 50px;
   align-items: start;
 }
 
-/* ============ LOGOS UNDER ABOUT ============ */
-.client-logos-big {
-  max-width: 1100px;
-  margin: 30px auto 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 24px;
-  align-items: center;
-  justify-items: center;
+.two-col img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
 
-.client-logos-big img {
-  max-height: 80px;
-  opacity: 0.9;
-}
-
-/* ============ SERVICES CARDS WITH SHIMMER ============ */
+/* ============== SERVICES GRID ============== */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -178,63 +139,55 @@ section {
   border-radius: 18px;
   box-shadow: 0 18px 40px rgba(0,0,0,0.08);
   border-top: 5px solid var(--blue-main);
-  position: relative;
-  overflow: hidden;
 }
 
-/* shimmer overlay */
-.service-card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.4) 50%,
-    rgba(255,255,255,0) 100%
-  );
-  animation: shimmer 6s infinite linear;
+/* ============== CLIENT LOGOS ============== */
+.client-logos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+  gap: 22px;
+  align-items: center;
 }
 
-@keyframes shimmer {
-  0% { left: -150%; }
-  100% { left: 150%; }
+.client-logos img {
+  max-height: 56px;
+  opacity: 0.85;
 }
 
-/* ============ CONTACT BANNER ============ */
+/* ============== TESTIMONIAL ============== */
+.testimonial {
+  background: white;
+  padding: 42px;
+  border-left: 6px solid var(--bronze);
+  border-radius: 18px;
+  box-shadow: 0 16px 36px rgba(0,0,0,0.08);
+}
+
+/* ============== CONTACT BANNER ============== */
 .contact-banner {
   background: linear-gradient(180deg, #1F2937, #17202A);
   padding: 70px 24px;
 }
 
 .contact-inner {
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
 }
 
-/* BUTTON ROW */
-.contact-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 30px;
-}
-
-.contact-btn {
+/* CONTACT BUTTONS */
+.contact-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   padding: 14px 22px;
   border-radius: 14px;
   font-family: "DM Sans", sans-serif;
   font-weight: 700;
   text-decoration: none;
   color: white;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
 }
 
 .email-btn {
@@ -245,21 +198,24 @@ section {
   background: linear-gradient(135deg,#0077b5,#005983);
 }
 
-.chat-btn {
-  background: linear-gradient(135deg,#2fd66f,#1da851);
-}
-
-/* FORM (CENTRED) */
+/* FORM */
 .contact-form {
-  max-width: 520px;
-  margin: 0 auto;
   background: white;
-  padding: 32px;
-  border-radius: 18px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+  padding: 34px;
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.18);
 }
 
-/* ============ WHATSAPP CHAT ============ */
+/* THANK YOU STATE */
+.thank-you {
+  display: none;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+/* FLOATING CHAT */
 .chat-float {
   position: fixed;
   bottom: 26px;
@@ -268,59 +224,19 @@ section {
   color: white;
   padding: 14px 22px;
   border-radius: 30px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
-}
-
-/* CHAT WINDOW */
-.chat-window {
-  position: fixed;
-  bottom: 80px;
-  right: 26px;
-  width: 320px;
-  background: #e5ddd5;
-  border-radius: 18px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.2);
-  display: none;
-}
-
-/* typing dots */
-.typing {
-  display: none;
-  font-size: 12px;
-  color: #666;
-  margin-bottom: 6px;
-}
-
-.typing span {
-  animation: blink 1.4s infinite both;
-}
-
-.typing span:nth-child(2) { animation-delay: .2s; }
-.typing span:nth-child(3) { animation-delay: .4s; }
-
-@keyframes blink {
-  0% { opacity: .2; }
-  20% { opacity: 1; }
-  100% { opacity: .2; }
-}
-
-/* ============ SCROLL UP ============ */
-.scroll-up {
-  position: fixed;
-  bottom: 26px;
-  left: 26px;
-  background: var(--charcoal);
-  color: white;
-  padding: 10px 14px;
-  border-radius: 50%;
   text-decoration: none;
   font-weight: 700;
 }
 
+/* MOBILE */
 @media (max-width: 900px) {
-  .two-col { grid-template-columns: 1fr; }
+  .contact-inner {
+    grid-template-columns: 1fr;
+  }
+  .top-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 }
 </style>
 </head>
@@ -331,38 +247,94 @@ section {
 <div class="top-banner">
   <div class="top-inner">
     <img src="logos/logo-primary.png" alt="Anjali D’Sylva Logo">
+
     <div class="name-block">
       <h1>Anjali D’Sylva</h1>
       <p>Services & Strategy</p>
     </div>
 
-    <div class="nav-wrapper">
-      <nav>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="Anjali_DSylva_CV.pdf" target="_blank">Download CV</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </nav>
-      <div class="nav-slider" id="navSlider"></div>
-    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#experience">Experience</a>
+      <a href="Anjali_DSylva_CV.pdf" target="_blank">Download CV</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
 </div>
 
+<!-- TAGLINE -->
 <div class="tagline">
-Helping Founders, Leaders, Teams, and Businesses Build, Grow, and Run with Clarity, Structure, and Confidence.
+  Helping Founders, Leaders, Teams, and Businesses Build, Grow, and Run with Clarity, Structure, and Confidence.
 </div>
 
 <!-- ABOUT -->
-<section id="about" class="two-col fade">
+<section id="about" class="two-col">
   <div>
     <h2>About</h2>
-    <p>I partner with founders and leadership teams to build, run, and scale companies by creating strong operational foundations from early-stage setup through executive operations.</p>
+    <p>I help founders and leadership teams build, run, and scale companies by setting up the operational backbone from early-stage setup to executive and leadership operations.</p>
+
+    <p>I bring structure and execution as a fractional team member in fast moving environments — combining hands-on delivery with strategic operational leadership.</p>
   </div>
   <img src="headshot.jpg" alt="Anjali portrait">
 </section>
 
-<!-- LOGOS UNDER ABOUT -->
-<div class="client-logos-big fade">
+<!-- SERVICES -->
+<section id="services">
+<h2>Services</h2>
+
+<div class="services-grid">
+
+<div class="service-card">
+<h3>Startup Ops</h3>
+<ul>
+<li>Company formation & entity setup</li>
+<li>Banking, payments & finance workflows</li>
+<li>Accounting & invoicing systems</li>
+<li>Contractor & HR operations</li>
+<li>Tools, systems & SOP setup</li>
+<li>Legal & compliance coordination</li>
+</ul>
+</div>
+
+<div class="service-card">
+<h3>Virtual Assistance</h3>
+<ul>
+<li>Calendar & inbox management</li>
+<li>Travel & meetings coordination</li>
+<li>Research & reporting</li>
+<li>Document formatting</li>
+<li>CRM updates</li>
+</ul>
+</div>
+
+<div class="service-card">
+<h3>Senior Executive Assistant</h3>
+<ul>
+<li>CEO calendar ownership</li>
+<li>Board coordination</li>
+<li>Executive communications</li>
+<li>Meeting prep & follow-ups</li>
+</ul>
+</div>
+
+<div class="service-card">
+<h3>Chief of Staff Support</h3>
+<ul>
+<li>Strategy to operations</li>
+<li>OKR tracking</li>
+<li>Leadership cadence</li>
+<li>Process optimisation</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+<h2>Experience</h2>
+<div class="client-logos">
 <img src="logos/EsteeLauder.jpg">
 <img src="logos/FreedmenTrust.png">
 <img src="logos/GF.png">
@@ -374,137 +346,78 @@ Helping Founders, Leaders, Teams, and Businesses Build, Grow, and Run with Clari
 <img src="logos/UluPartners.png">
 <img src="logos/WGU.jpg">
 </div>
+</section>
 
-<!-- SERVICES -->
-<section id="services" class="fade">
-<h2>Services</h2>
-<div class="services-grid">
-<div class="service-card"><h3>Startup Ops</h3></div>
-<div class="service-card"><h3>Virtual Assistance</h3></div>
-<div class="service-card"><h3>Strategic EA</h3></div>
-<div class="service-card"><h3>Chief of Staff</h3></div>
+<!-- TESTIMONIAL -->
+<section>
+<div class="testimonial">
+<p>
+“Anjali brought calm, structure and clarity to our operations. Her ability to align teams and keep execution moving made a real difference.”
+</p>
+<strong>CEO, Climate Tech Company</strong>
 </div>
 </section>
 
 <!-- CONTACT -->
 <div id="contact" class="contact-banner">
   <div class="contact-inner">
-    <h2 style="color:white;">Let’s connect</h2>
 
-    <div class="contact-buttons">
-      <a class="contact-btn email-btn" href="mailto:aljdsylva@gmail.com">📧 Email</a>
-      <a class="contact-btn linkedin-btn" href="https://www.linkedin.com/in/anjalidsylva" target="_blank">🔗 LinkedIn</a>
-      <a class="contact-btn chat-btn" onclick="toggleChat()">💬 chat</a>
+    <div>
+      <h2 style="color:white;">Let’s connect</h2>
+      <a class="contact-link email-btn" href="mailto:aljdsylva@gmail.com">📧 Email</a>
+      <a class="contact-link linkedin-btn" href="https://www.linkedin.com/in/anjalidsylva" target="_blank">🔗 LinkedIn</a>
     </div>
 
-    <form class="contact-form">
+    <form id="leadForm" class="contact-form">
       <label>Tell me about you</label>
-      <textarea rows="3"></textarea>
+      <textarea id="aboutYou" required></textarea>
 
       <label>What help are you looking for?</label>
-      <textarea rows="3"></textarea>
+      <textarea id="helpNeeded" required></textarea>
 
       <label>Would you like a services rate card?</label>
-      <select>
-        <option>Yes</option>
-        <option>No</option>
-        <option>Maybe later</option>
+      <select id="rateCard">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="Maybe">Maybe later</option>
       </select>
+
+      <button type="submit">Send message</button>
     </form>
+
+    <div id="thankYou" class="thank-you">
+      <h3>Thank you for reaching out</h3>
+      <p>I’ll be in touch shortly.</p>
+    </div>
+
   </div>
 </div>
 
-<!-- CHAT WINDOW -->
-<div class="chat-window" id="chatBox">
-  <div class="chat-header">Chat with Anjali</div>
-  <div class="chat-body">
-    <div class="typing" id="typingDots">Anjali is typing<span>.</span><span>.</span><span>.</span></div>
-    <textarea id="chatText"></textarea>
-    <button onclick="sendWhatsApp()">Send</button>
-  </div>
-</div>
-
-<a class="chat-float" onclick="toggleChat()">chat</a>
-<a class="scroll-up" href="#">↑</a>
+<a class="chat-float" href="https://wa.me/919082231518" target="_blank">Let’s talk</a>
 
 <script>
-/* fade in */
-const faders = document.querySelectorAll(".fade");
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add("visible");
-  });
-});
-faders.forEach(f => observer.observe(f));
+document.getElementById("leadForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-/* chat toggle with typing */
-function toggleChat() {
-  const box = document.getElementById("chatBox");
-  const dots = document.getElementById("typingDots");
+  const about = document.getElementById("aboutYou").value;
+  const help = document.getElementById("helpNeeded").value;
+  const rate = document.getElementById("rateCard").value;
 
-  if (box.style.display === "block") {
-    box.style.display = "none";
-  } else {
-    box.style.display = "block";
-    dots.style.display = "block";
+  const subject = encodeURIComponent("New inquiry from your website");
+  const body = encodeURIComponent(
+    "About you:\n" + about + "\n\n" +
+    "Help needed:\n" + help + "\n\n" +
+    "Rate card requested:\n" + rate
+  );
 
-    setTimeout(() => {
-      dots.style.display = "none";
-      document.getElementById("chatText").value =
-"Hi Anjali — I’m reaching out from your website.\n\nI'd love to discuss how you might support my business.";
-    }, 1500);
-  }
-}
+  const mailtoLink = "mailto:aljdsylva@gmail.com?subject=" + subject + "&body=" + body;
 
-/* send + auto close */
-function sendWhatsApp() {
-  const text = document.getElementById("chatText").value;
-  const url = "https://wa.me/919082231518?text=" + encodeURIComponent(text);
-  window.open(url, "_blank");
+  document.getElementById("leadForm").style.display = "none";
+  document.getElementById("thankYou").style.display = "block";
 
   setTimeout(() => {
-    document.getElementById("chatBox").style.display = "none";
-  }, 1200);
-}
-
-/* ====== SLIDING PILL NAV + SCROLL SPY ====== */
-const sections = document.querySelectorAll("section, #contact");
-const navLinks = document.querySelectorAll(".nav-link");
-const slider = document.getElementById("navSlider");
-
-function moveSliderTo(link) {
-  const rect = link.getBoundingClientRect();
-  const navRect = link.parentElement.getBoundingClientRect();
-
-  slider.style.width = rect.width + 20 + "px";
-  slider.style.transform = `translateX(${rect.left - navRect.left - 10}px)`;
-}
-
-/* initialise on first link */
-moveSliderTo(navLinks[0]);
-
-window.addEventListener("scroll", () => {
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 140;
-    if (window.scrollY >= sectionTop) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
-      moveSliderTo(link);
-    }
-  });
-});
-
-/* move slider on hover too */
-navLinks.forEach(link => {
-  link.addEventListener("mouseenter", () => moveSliderTo(link));
+    window.location.href = mailtoLink;
+  }, 500);
 });
 </script>
 
