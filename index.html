@@ -108,7 +108,7 @@ nav a.active {
     background 0.45s ease;
 }
 
-/* ============ MUTED BANNER WITH SHIMMER ============ */
+/* ============ MUTED BANNER WITH METALLIC SHIMMER ============ */
 .tagline {
   position: relative;
   overflow: hidden;
@@ -123,38 +123,60 @@ nav a.active {
   background-attachment: fixed;
 }
 
-/* SHIMMER LAYER */
+/* METALLIC SHIMMER */
 .tagline::before {
   content: "";
   position: absolute;
-  top: -20%;
-  left: -100%;
-  width: 200%;
-  height: 150%;
+  top: -40%;
+  left: -120%;
+  width: 260%;
+  height: 180%;
   background: linear-gradient(
     120deg,
-    transparent,
-    rgba(255,255,255,0.18),
-    transparent
+    transparent 0%,
+    rgba(255,255,255,0.08) 20%,
+    rgba(255,255,255,0.28) 35%,
+    rgba(255,255,255,0.08) 50%,
+    transparent 70%
   );
-  animation: shimmer 8s infinite linear;
+  animation: metallicShimmer 9s infinite linear;
 }
 
-@keyframes shimmer {
+@keyframes metallicShimmer {
   0% { transform: translateX(0); }
   100% { transform: translateX(100%); }
 }
 
-/* ============ SECTIONS WITH BRONZE DIVIDER ============ */
+/* ============ SECTIONS WITH ANIMATED BRONZE DIVIDER ============ */
 section {
   max-width: 1100px;
   margin: 68px auto;
   padding: 0 24px 56px;
-  border-bottom: 1px solid rgba(201,166,107,0.4);
+  position: relative;
 }
 
-/* last section no line */
-#services { border-bottom: none; }
+/* animated divider */
+section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: rgba(201,166,107,0.45);
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+/* when section is visible */
+section.visible::after {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* last section no divider */
+#services::after { display: none; }
 
 /* ============ ABOUT ============ */
 .two-col {
@@ -237,15 +259,11 @@ section {
   box-shadow: 0 20px 48px rgba(0,0,0,0.25);
 }
 
-.contact-form textarea,
-.contact-form select {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 18px;
-  border-radius: 12px;
-  border: 1px solid #ddd;
-  font-family: "Inter", sans-serif;
-  font-size: 14px;
+/* THANK YOU STATE */
+.thank-you {
+  display: none;
+  color: var(--charcoal);
+  font-weight: 600;
 }
 
 /* SUBMIT BUTTON */
@@ -306,7 +324,6 @@ section {
 
 <body>
 
-<!-- TOP -->
 <div class="top-banner">
   <div class="top-inner">
     <img src="logos/logo-primary.png" alt="Anjali D’Sylva Logo">
@@ -327,95 +344,31 @@ section {
   </div>
 </div>
 
-<!-- UPDATED TAGLINE (PROPER CAPITALISATION) -->
 <div class="tagline">
 Helping Founders, Leaders, Teams, and Businesses to Build, Grow, and Run with Clarity, Structure, and Confidence.
 </div>
 
-<!-- ABOUT -->
 <section id="about" class="two-col">
   <div>
     <h2>About</h2>
     <p>I partner with founders and leadership teams to build, run, and scale companies by creating strong operational foundations from early-stage setup through executive operations.</p>
-
     <p>With experience across FinOps, tech, renewable energy, education, executive consulting, retail, and digital operations, I bring versatility, structure, and strategic execution as a fractional operations leader—whether working at task level or in a Chief of Staff capacity.</p>
-
     <p>I design and run systems that enable confident, sustainable growth while applying strong emotional intelligence to know when to lead, support, or operate behind the scenes.</p>
-
     <p>After five years working remotely from a structured home office, I am highly organized, self-reliant, and effective in collaborative communication across digital platforms.</p>
   </div>
   <img src="headshot.jpg" alt="Anjali portrait">
 </section>
 
-<!-- SERVICES -->
 <section id="services">
 <h2>Services</h2>
-
-<p>I help founders and leadership teams build, run, and scale companies by setting up the operational backbone - from early-stage setup to executive and leadership operations.</p>
-
-<p>My work spans four levels of support, allowing companies to engage me based on where they are in their growth journey:</p>
-
 <div class="services-grid">
-
-<div class="service-card">
-<h3>1) Small Company Setup & Backend Infrastructure (Startup Ops)</h3>
-<ul>
-<li>Company formation coordination & entity setup support</li>
-<li>Business banking, payments & finance workflows</li>
-<li>Accounting & invoicing systems</li>
-<li>Contractor & HR operations</li>
-<li>Tools, systems & SOP setup.</li>
-<li>Legal & compliance coordination</li>
-<li>Centralised document management & governance frameworks</li>
-</ul>
-<p><strong>Outcome:</strong> Founders get a clean, scalable operational engine from day one.</p>
-</div>
-
-<div class="service-card">
-<h3>2) Virtual Assistance (Task-Based Execution)</h3>
-<ul>
-<li>Calendar, inbox & scheduling management</li>
-<li>Travel, meetings & logistics coordination</li>
-<li>Data entry, research & reporting support</li>
-<li>Document formatting & file management</li>
-<li>CRM updates & admin maintenance</li>
-<li>Basic finance admin</li>
-</ul>
-<p><strong>Outcome:</strong> Leaders get time back and consistent execution without micromanagement.</p>
-</div>
-
-<div class="service-card">
-<h3>3) Senior Executive Assistant (Strategic EA)</h3>
-<ul>
-<li>CEO/Founder calendar & inbox ownership</li>
-<li>Board & investor meeting coordination</li>
-<li>Executive communications & stakeholder management</li>
-<li>Meeting prep, briefs & follow-ups</li>
-<li>Cross-team coordination & priority tracking</li>
-<li>Confidential admin, documentation & reporting</li>
-<li>Executive project management & delivery oversight</li>
-</ul>
-<p><strong>Outcome:</strong> Leaders stay focused on strategy while execution is handled with precision.</p>
-</div>
-
-<div class="service-card">
-<h3>4) Chief of Staff Level Support (Leadership & Operations)</h3>
-<ul>
-<li>Translating strategy into operational plans</li>
-<li>Company-wide priorities & OKR tracking</li>
-<li>Cross-functional execution & accountability</li>
-<li>Leadership meeting cadence & governance</li>
-<li>Executive reporting & business rhythm</li>
-<li>Process optimisation & operational scaling</li>
-<li>Acting as a bridge between leadership and teams</li>
-</ul>
-<p><strong>Outcome:</strong> Leadership teams operate with clarity, alignment, and execution discipline.</p>
-</div>
-
+<div class="service-card"><h3>Startup Ops</h3></div>
+<div class="service-card"><h3>Virtual Assistance</h3></div>
+<div class="service-card"><h3>Strategic EA</h3></div>
+<div class="service-card"><h3>Chief of Staff</h3></div>
 </div>
 </section>
 
-<!-- CONTACT -->
 <div id="contact" class="contact-banner">
   <div class="contact-inner">
     <h2 style="color:white;">Let’s connect</h2>
@@ -425,22 +378,24 @@ Helping Founders, Leaders, Teams, and Businesses to Build, Grow, and Run with Cl
       <a class="contact-btn linkedin-btn" href="https://www.linkedin.com/in/anjalidsylva" target="_blank">🔗 LinkedIn</a>
     </div>
 
-    <form class="contact-form">
+    <form class="contact-form" id="contactForm">
       <textarea rows="3" placeholder="Tell me about you"></textarea>
       <textarea rows="3" placeholder="What help are you looking for?"></textarea>
       <select>
         <option disabled selected>Would you like a services rate card?</option>
         <option>Yes</option>
         <option>No</option>
-        <option>Maybe later</option>
       </select>
 
       <button type="submit" class="submit-btn">Send message</button>
+
+      <div class="thank-you" id="thankYouMsg">
+        Thank you — I’ll be in touch shortly.
+      </div>
     </form>
   </div>
 </div>
 
-<!-- COPYRIGHT -->
 <div class="site-footer">
 © <script>document.write(new Date().getFullYear());</script> Anjali D’Sylva
 </div>
@@ -449,7 +404,8 @@ Helping Founders, Leaders, Teams, and Businesses to Build, Grow, and Run with Cl
 <a class="scroll-up" href="#">↑</a>
 
 <script>
-const sections = document.querySelectorAll("section, #contact");
+/* NAV SLIDER */
+const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-link");
 const slider = document.getElementById("navSlider");
 
@@ -481,8 +437,22 @@ window.addEventListener("scroll", () => {
   });
 });
 
-navLinks.forEach(link => {
-  link.addEventListener("mouseenter", () => moveSliderTo(link));
+/* ANIMATE DIVIDERS ON SCROLL */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+}, { threshold: 0.2 });
+
+sections.forEach(section => observer.observe(section));
+
+/* FORM CONFIRMATION MESSAGE */
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  this.querySelector(".submit-btn").style.display = "none";
+  document.getElementById("thankYouMsg").style.display = "block";
 });
 </script>
 
