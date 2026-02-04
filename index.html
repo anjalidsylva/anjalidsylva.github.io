@@ -25,73 +25,93 @@ body {
   font-family: "Inter", sans-serif;
   background: var(--light-bg);
   color: var(--charcoal);
-  line-height: 1.75;
+  line-height: 1.8;
   letter-spacing: 0.2px;
 }
 
-/* ============ TOP BANNER ============ */
+/* ============ GLASS HEADER (NEW) ============ */
 .top-banner {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: white;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
-  padding: 14px 28px;
+  background: rgba(74,111,165,0.85); /* semi-transparent blue */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+  padding: 16px 28px;
 }
 
+/* layout inside header */
 .top-inner {
   max-width: 1200px;
   margin: auto;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 20px;
+  gap: 22px;
 }
 
-/* BIGGER LOGO */
+/* BIGGER PRIMARY LOGO */
 .top-inner img {
-  height: 96px;
+  height: 115px;
 }
 
 /* NAME + SUBTITLE NEXT TO LOGO */
 .name-block h1 {
   margin: 0;
-  font-size: 26px;
+  font-size: 28px;
+  color: white;
 }
 
 .name-block p {
   margin: 4px 0 0;
   font-size: 13px;
-  color: var(--bronze);
+  color: #e8d1a1;
   letter-spacing: 0.6px;
   text-transform: uppercase;
 }
 
-/* NAV ON RIGHT */
+/* ======== NAV + SLIDING PILL HIGHLIGHT ======== */
+.nav-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+}
+
 nav a {
   margin-left: 18px;
   text-decoration: none;
   font-family: "DM Sans", sans-serif;
   font-weight: 700;
   font-size: 15px;
-  color: var(--charcoal);
+  color: white;
   text-transform: uppercase;
   position: relative;
+  z-index: 2;
 }
 
-/* underline animation */
-nav a::after {
-  content: "";
+/* remove old underline */
+nav a::after { display: none; }
+
+/* active text colour */
+nav a.active {
+  color: #f4e3b8;
+}
+
+/* SLIDING PILL */
+.nav-slider {
   position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0%;
-  height: 2px;
-  background: var(--blue-main);
-  transition: width 0.3s ease;
+  bottom: -2px;
+  height: 8px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #3b5fa0, #4A6FA5, #6f8fc4);
+  box-shadow: 0 6px 14px rgba(74,111,165,0.25);
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.45s ease;
 }
-
-nav a:hover::after { width: 100%; }
 
 /* ============ PARALLAX BLUE BAND ============ */
 .tagline {
@@ -106,18 +126,6 @@ nav a:hover::after { width: 100%; }
   background-attachment: fixed;
 }
 
-/* ============ FADE-IN ============ */
-.fade {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: all 0.6s ease;
-}
-
-.fade.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* ============ SECTIONS ============ */
 section {
   max-width: 1100px;
@@ -125,6 +133,7 @@ section {
   padding: 0 24px;
 }
 
+/* ============ ABOUT ============ */
 .two-col {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -132,26 +141,16 @@ section {
   align-items: start;
 }
 
-/* ============ LOGOS UNDER ABOUT ============ */
-.client-logos-big {
-  max-width: 1100px;
-  margin: 30px auto 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 24px;
-  align-items: center;
-  justify-items: center;
+.two-col img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 18px 36px rgba(0,0,0,0.12);
 }
 
-.client-logos-big img {
-  max-height: 80px;
-  opacity: 0.9;
-}
-
-/* ============ SERVICES CARDS WITH SHIMMER ============ */
+/* ============ SERVICES CARDS ============ */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 26px;
 }
 
@@ -161,30 +160,6 @@ section {
   border-radius: 18px;
   box-shadow: 0 18px 40px rgba(0,0,0,0.08);
   border-top: 5px solid var(--blue-main);
-  position: relative;
-  overflow: hidden;
-}
-
-/* shimmer overlay */
-.service-card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.4) 50%,
-    rgba(255,255,255,0) 100%
-  );
-  animation: shimmer 6s infinite linear;
-}
-
-@keyframes shimmer {
-  0% { left: -150%; }
-  100% { left: 150%; }
 }
 
 /* ============ CONTACT BANNER ============ */
@@ -228,21 +203,33 @@ section {
   background: linear-gradient(135deg,#0077b5,#005983);
 }
 
-.chat-btn {
-  background: linear-gradient(135deg,#2fd66f,#1da851);
-}
-
-/* FORM (CENTRED) */
+/* SLEEK FORM DESIGN */
 .contact-form {
-  max-width: 520px;
+  max-width: 560px;
   margin: 0 auto;
   background: white;
-  padding: 32px;
-  border-radius: 18px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+  padding: 36px;
+  border-radius: 20px;
+  box-shadow: 0 20px 48px rgba(0,0,0,0.25);
 }
 
-/* ============ WHATSAPP CHAT ============ */
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+}
+
+/* TRANSLUCENT PLACEHOLDERS */
+::placeholder {
+  color: rgba(31, 41, 55, 0.45);
+}
+
+/* ============ WHATSAPP CHAT BUTTON ============ */
 .chat-float {
   position: fixed;
   bottom: 26px;
@@ -254,39 +241,6 @@ section {
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 10px 24px rgba(0,0,0,0.25);
-}
-
-/* CHAT WINDOW */
-.chat-window {
-  position: fixed;
-  bottom: 80px;
-  right: 26px;
-  width: 320px;
-  background: #e5ddd5;
-  border-radius: 18px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.2);
-  display: none;
-}
-
-/* typing dots */
-.typing {
-  display: none;
-  font-size: 12px;
-  color: #666;
-  margin-bottom: 6px;
-}
-
-.typing span {
-  animation: blink 1.4s infinite both;
-}
-
-.typing span:nth-child(2) { animation-delay: .2s; }
-.typing span:nth-child(3) { animation-delay: .4s; }
-
-@keyframes blink {
-  0% { opacity: .2; }
-  20% { opacity: 1; }
-  100% { opacity: .2; }
 }
 
 /* ============ SCROLL UP ============ */
@@ -318,50 +272,103 @@ section {
       <h1>Anjali D’Sylva</h1>
       <p>Services & Strategy</p>
     </div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="Anjali_DSylva_CV.pdf" target="_blank">Download CV</a>
-      <a href="#contact">Contact</a>
-    </nav>
+
+    <div class="nav-wrapper">
+      <nav>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="Anjali_DSylva_CV.pdf" target="_blank">Download CV</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-slider" id="navSlider"></div>
+    </div>
   </div>
 </div>
 
 <div class="tagline">
-Helping Founders, Leaders, Teams, and Businesses Build, Grow, and Run with Clarity, Structure, and Confidence.
+Helping founders, leaders, teams, and businesses to build, grow, and run with clarity, structure, and confidence.
 </div>
 
 <!-- ABOUT -->
-<section id="about" class="two-col fade">
+<section id="about" class="two-col">
   <div>
     <h2>About</h2>
     <p>I partner with founders and leadership teams to build, run, and scale companies by creating strong operational foundations from early-stage setup through executive operations.</p>
+
+    <p>With experience across FinOps, tech, renewable energy, education, executive consulting, retail, and digital operations, I bring versatility, structure, and strategic execution as a fractional operations leader—whether working at task level or in a Chief of Staff capacity.</p>
+
+    <p>I design and run systems that enable confident, sustainable growth while applying strong emotional intelligence to know when to lead, support, or operate behind the scenes.</p>
+
+    <p>After five years working remotely from a structured home office, I am highly organized, self-reliant, and effective in collaborative communication across digital platforms.</p>
   </div>
   <img src="headshot.jpg" alt="Anjali portrait">
 </section>
 
-<!-- LOGOS UNDER ABOUT -->
-<div class="client-logos-big fade">
-<img src="logos/EsteeLauder.jpg">
-<img src="logos/FreedmenTrust.png">
-<img src="logos/GF.png">
-<img src="logos/GPV.png">
-<img src="logos/HayfordTrust.png">
-<img src="logos/KKR.png">
-<img src="logos/OptimalTech.png">
-<img src="logos/TTH.png">
-<img src="logos/UluPartners.png">
-<img src="logos/WGU.jpg">
+<!-- SERVICES -->
+<section id="services">
+<h2>Services</h2>
+
+<p>I help founders and leadership teams build, run, and scale companies by setting up the operational backbone - from early-stage setup to executive and leadership operations.</p>
+
+<p>My work spans four levels of support, allowing companies to engage me based on where they are in their growth journey:</p>
+
+<div class="services-grid">
+
+<div class="service-card">
+<h3>1) Small Company Setup & Backend Infrastructure (Startup Ops)</h3>
+<ul>
+<li>Company formation coordination & entity setup support</li>
+<li>Business banking, payments & finance workflows</li>
+<li>Accounting & invoicing systems</li>
+<li>Contractor & HR operations</li>
+<li>Tools, systems & SOP setup.</li>
+<li>Legal & compliance coordination</li>
+<li>Centralised document management & governance frameworks</li>
+</ul>
+<p><strong>Outcome:</strong> Founders get a clean, scalable operational engine from day one.</p>
 </div>
 
-<!-- SERVICES -->
-<section id="services" class="fade">
-<h2>Services</h2>
-<div class="services-grid">
-<div class="service-card"><h3>Startup Ops</h3></div>
-<div class="service-card"><h3>Virtual Assistance</h3></div>
-<div class="service-card"><h3>Strategic EA</h3></div>
-<div class="service-card"><h3>Chief of Staff</h3></div>
+<div class="service-card">
+<h3>2) Virtual Assistance (Task-Based Execution)</h3>
+<ul>
+<li>Calendar, inbox & scheduling management</li>
+<li>Travel, meetings & logistics coordination</li>
+<li>Data entry, research & reporting support</li>
+<li>Document formatting & file management</li>
+<li>CRM updates & admin maintenance</li>
+<li>Basic finance admin</li>
+</ul>
+<p><strong>Outcome:</strong> Leaders get time back and consistent execution without micromanagement.</p>
+</div>
+
+<div class="service-card">
+<h3>3) Senior Executive Assistant (Strategic EA)</h3>
+<ul>
+<li>CEO/Founder calendar & inbox ownership</li>
+<li>Board & investor meeting coordination</li>
+<li>Executive communications & stakeholder management</li>
+<li>Meeting prep, briefs & follow-ups</li>
+<li>Cross-team coordination & priority tracking</li>
+<li>Confidential admin, documentation & reporting</li>
+<li>Executive project management & delivery oversight</li>
+</ul>
+<p><strong>Outcome:</strong> Leaders stay focused on strategy while execution is handled with precision.</p>
+</div>
+
+<div class="service-card">
+<h3>4) Chief of Staff Level Support (Leadership & Operations)</h3>
+<ul>
+<li>Translating strategy into operational plans</li>
+<li>Company-wide priorities & OKR tracking</li>
+<li>Cross-functional execution & accountability</li>
+<li>Leadership meeting cadence & governance</li>
+<li>Executive reporting & business rhythm</li>
+<li>Process optimisation & operational scaling</li>
+<li>Acting as a bridge between leadership and teams</li>
+</ul>
+<p><strong>Outcome:</strong> Leadership teams operate with clarity, alignment, and execution discipline.</p>
+</div>
+
 </div>
 </section>
 
@@ -373,18 +380,13 @@ Helping Founders, Leaders, Teams, and Businesses Build, Grow, and Run with Clari
     <div class="contact-buttons">
       <a class="contact-btn email-btn" href="mailto:aljdsylva@gmail.com">📧 Email</a>
       <a class="contact-btn linkedin-btn" href="https://www.linkedin.com/in/anjalidsylva" target="_blank">🔗 LinkedIn</a>
-      <a class="contact-btn chat-btn" onclick="toggleChat()">💬 chat</a>
     </div>
 
     <form class="contact-form">
-      <label>Tell me about you</label>
-      <textarea rows="3"></textarea>
-
-      <label>What help are you looking for?</label>
-      <textarea rows="3"></textarea>
-
-      <label>Would you like a services rate card?</label>
+      <textarea rows="3" placeholder="Tell me about you"></textarea>
+      <textarea rows="3" placeholder="What help are you looking for?"></textarea>
       <select>
+        <option disabled selected>Would you like a services rate card?</option>
         <option>Yes</option>
         <option>No</option>
         <option>Maybe later</option>
@@ -393,58 +395,49 @@ Helping Founders, Leaders, Teams, and Businesses Build, Grow, and Run with Clari
   </div>
 </div>
 
-<!-- CHAT WINDOW -->
-<div class="chat-window" id="chatBox">
-  <div class="chat-header">Chat with Anjali</div>
-  <div class="chat-body">
-    <div class="typing" id="typingDots">Anjali is typing<span>.</span><span>.</span><span>.</span></div>
-    <textarea id="chatText"></textarea>
-    <button onclick="sendWhatsApp()">Send</button>
-  </div>
-</div>
-
-<a class="chat-float" onclick="toggleChat()">chat</a>
+<a class="chat-float" href="https://wa.me/919082231518" target="_blank">Let’s talk!</a>
 <a class="scroll-up" href="#">↑</a>
 
 <script>
-/* fade in */
-const faders = document.querySelectorAll(".fade");
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add("visible");
+/* ====== SLIDING NAV HIGHLIGHT + SCROLL SPY ====== */
+const sections = document.querySelectorAll("section, #contact");
+const navLinks = document.querySelectorAll(".nav-link");
+const slider = document.getElementById("navSlider");
+
+function moveSliderTo(link) {
+  const rect = link.getBoundingClientRect();
+  const navRect = link.parentElement.getBoundingClientRect();
+
+  slider.style.width = rect.width + 20 + "px";
+  slider.style.transform = `translateX(${rect.left - navRect.left - 10}px)`;
+}
+
+/* initialise slider */
+moveSliderTo(navLinks[0]);
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 140;
+    if (window.scrollY >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+      moveSliderTo(link);
+    }
   });
 });
-faders.forEach(f => observer.observe(f));
 
-/* chat toggle with typing */
-function toggleChat() {
-  const box = document.getElementById("chatBox");
-  const dots = document.getElementById("typingDots");
-
-  if (box.style.display === "block") {
-    box.style.display = "none";
-  } else {
-    box.style.display = "block";
-    dots.style.display = "block";
-
-    setTimeout(() => {
-      dots.style.display = "none";
-      document.getElementById("chatText").value =
-"Hi Anjali — I’m reaching out from your website.\n\nI'd love to discuss how you might support my business.";
-    }, 1500);
-  }
-}
-
-/* send + auto close */
-function sendWhatsApp() {
-  const text = document.getElementById("chatText").value;
-  const url = "https://wa.me/919082231518?text=" + encodeURIComponent(text);
-  window.open(url, "_blank");
-
-  setTimeout(() => {
-    document.getElementById("chatBox").style.display = "none";
-  }, 1200);
-}
+/* move slider on hover too */
+navLinks.forEach(link => {
+  link.addEventListener("mouseenter", () => moveSliderTo(link));
+});
 </script>
 
 </body>
