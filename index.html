@@ -93,15 +93,6 @@ nav a::after {
 
 nav a:hover::after { width: 100%; }
 
-/* 🔹 ACTIVE NAV STATE ON SCROLL */
-nav a.active {
-  color: var(--blue-main);
-}
-
-nav a.active::after {
-  width: 100%;
-}
-
 /* ============ PARALLAX BLUE BAND ============ */
 .tagline {
   text-align: center;
@@ -328,10 +319,10 @@ section {
       <p>Services & Strategy</p>
     </div>
     <nav>
-      <a href="#about" class="nav-link">About</a>
-      <a href="#services" class="nav-link">Services</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
       <a href="Anjali_DSylva_CV.pdf" target="_blank">Download CV</a>
-      <a href="#contact" class="nav-link">Contact</a>
+      <a href="#contact">Contact</a>
     </nav>
   </div>
 </div>
@@ -454,28 +445,6 @@ function sendWhatsApp() {
     document.getElementById("chatBox").style.display = "none";
   }, 1200);
 }
-
-/* 🔹 ACTIVE NAV ON SCROLL (SCROLL SPY) */
-const sections = document.querySelectorAll("section, #contact");
-const navLinks = document.querySelectorAll(".nav-link");
-
-window.addEventListener("scroll", () => {
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 120;
-    if (window.scrollY >= sectionTop) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
-    }
-  });
-});
 </script>
 
 </body>
